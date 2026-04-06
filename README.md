@@ -205,9 +205,9 @@
           <h2 class="section-title">Contact</h2>
           <p class="section-copy">Replace the placeholder details below with your preferred business contact information after deployment.</p>
           <div><strong>Email</strong><br>contact@acbmai.de</div>
-          <div><strong>Location</strong><br>Langen, Hesse, Germany</div>
+          <div><strong>Location</strong><br>Frankfurt, Germany</div>
           <div><strong>Focus</strong><br>Display technology, compensation IP, and collaboration inquiries</div>
-          <a class="btn btn-primary" href="mailto:contact@acbmai.de">Email ACBM</a>
+          <a class="btn btn-primary" href="mailto:acbm@acbmai.de">Email ACBM</a>
         </div>
       </div>
     </section>
