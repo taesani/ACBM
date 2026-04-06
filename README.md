@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ACBM | Adaptive Compensation-Based Methodology</title>
+  <title>ACBM | Adaptive Compensation-Based Methodology</title> 
   <meta name="description" content="ACBM introduces adaptive compensation methodology for display uniformity, luminance control, and scalable calibration across advanced display systems.">
   <style>
     :root {
