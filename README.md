@@ -8,8 +8,7 @@ ACBM Homepage
   <img src="./images/image1.jpg" alt="Display technology lab image" style="max-width:100%; height:auto;">
   <p>Adaptive compensation technology for display uniformity and luminance control.</p>
 </section>
-from pathlib import Path
-html = '''<!doctype html>
+<!doctype html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
@@ -232,6 +231,3 @@ html = '''<!doctype html>
   </footer>
 </body>
 </html>
-'''
-Path('output').mkdir(exist_ok=True)
-Path('output/index.html').write_text(html, encoding='utf-8')
