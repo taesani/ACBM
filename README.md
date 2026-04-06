@@ -161,8 +161,8 @@
             </ul>
           </div>
           <div class="panel media-wrap">
-            <img src="./images/ACBM logo.png" alt="ACBM technology image" width="1200" height="750" loading="lazy">
-          </div>
+            <img src="./images/ACBMlogo.jpg" alt="ACBM technology image" width="1200" height="750" loading="lazy">
+          </div>    
         </div>
       </div>
     </section>
