@@ -113,7 +113,7 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="ACBM home">
-        <span class="brand-mark">AC</span>
+        <span class="brand-mark">AI</span>
         <span>ACBM</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
