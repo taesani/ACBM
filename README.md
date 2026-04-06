@@ -215,8 +215,7 @@
   <footer>
     <div class="container footer-box">
       <div>© ACBM</div>
-      <div>Built as a static GitHub Pages homepage.</div>
-    </div>
+      </div>
   </footer>
 </body>
 </html>
