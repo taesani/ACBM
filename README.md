@@ -206,7 +206,7 @@
           <div><strong>Email</strong><br>acbm@acbmai.de</div>
           <div><strong>Location</strong><br>Frankfurt, Germany</div>
           <div><strong>Focus</strong><br>Display technology, compensation IP, and collaboration inquiries</div>
-          <a class="btn btn-primary" href="mailto:acbm@acbmai.de">Email ACBM</a>
+          <a class="btn btn-primary" href="mailto:acbm@acbmai.de">Email ACBM AI</a>
         </div>
       </div>
     </section>
@@ -214,7 +214,7 @@
 
   <footer>
     <div class="container footer-box">
-      <div>© ACBM</div>
+      <div>© ACBM AI</div>
       </div>
   </footer>
 </body>
