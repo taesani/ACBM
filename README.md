@@ -149,12 +149,12 @@
     <section id="technology">
       <div class="container">
         <h2 class="section-title">Technology</h2>
-        <p class="section-copy">The homepage is structured as a clear technical introduction rather than a marketing-heavy landing page, which suits a specialist display technology audience and keeps GitHub Pages deployment simple with one root <code>index.html</code> file.</p>
+        <p class="section-copy">Parametric Transfer function based LUT-less technology. <code>index.html</code> file.</p>
         <div class="two-col">
           <div class="panel">
             <h3>What ACBM addresses</h3>
             <ul class="list">
-              <li>Pixel-to-pixel non-uniformity and luminance variation.</li>
+              <li>Grid based uniformity and luminance variation.</li>
               <li>Compensation strategies that remain practical at scale.</li>
               <li>Integration of calibration logic with driver and manufacturing workflows.</li>
               <li>Architecture choices that reduce memory overhead compared with brute-force LUT storage.</li>
