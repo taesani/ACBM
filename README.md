@@ -149,7 +149,7 @@
     <section id="technology">
       <div class="container">
         <h2 class="section-title">Technology</h2>
-        <p class="section-copy">Parametric Transfer function based LUT-less technology. <code>index.html</code> file.</p>
+        <p class="section-copy">Parametric Transfer function based LUT-less technology.</p>
         <div class="two-col">
           <div class="panel">
             <h3>What ACBM addresses</h3>
