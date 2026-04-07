@@ -192,7 +192,7 @@
       <div class="container two-col">
         <div class="panel">
           <h2 class="section-title">IP focus</h2>
-          <p class="section-copy">This site can present patented and patent-pending work, commercialization themes, and partnership opportunities in a compact format suitable for investors, licensees, and engineering teams.</p>
+          <p class="section-copy">This present patented and patent-pending work, commercialization themes, and partnership opportunities in a compact format suitable for investors, licensees, and engineering teams.</p>
           <ul class="list">
             <li>Adaptive compensation methodology.</li>
             <li>Display calibration architecture.</li>
@@ -202,7 +202,7 @@
         </div>
         <div class="contact-card" id="contact">
           <h2 class="section-title">Contact</h2>
-          <p class="section-copy">Replace the placeholder details below with your preferred business contact information after deployment.</p>
+          <p class="section-copy"> Contact freely for your business needs, please.</p>
           <div><strong>Email</strong><br>acbm@acbmai.de</div>
           <div><strong>Location</strong><br>Frankfurt, Germany</div>
           <div><strong>Focus</strong><br>Display technology, compensation IP, and collaboration inquiries</div>
