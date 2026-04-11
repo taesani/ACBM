@@ -146,9 +146,25 @@
       </div>
     </section>
 
-<a href="https://youtu.be/LOXqIPtEQxk" target="_blank" rel="noopener noreferrer">
-  Watch our video
+<a href="https://youtu.be/LOXqIPtEQxk" target="_blank" rel="noopener noreferrer" class="yt-button">
+  Watch on YouTube 1 - Real Test
 </a>
+
+<style>
+  .yt-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #ff0000;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+
+  .yt-button:hover {
+    background: #cc0000;
+  }
+</style>
 
     <section id="technology">
       <div class="container">
@@ -171,9 +187,25 @@
       </div>
     </section>
     
-<a href="https://youtu.be/LOXqIPtEQxk" target="_blank" rel="noopener noreferrer">
-  Watch our video
+<a href="https://youtu.be/6pty-EGP6hw" target="_blank" rel="noopener noreferrer" class="yt-button">
+  Watch on YouTube 2 - compensation before and after
 </a>
+
+<style>
+  .yt-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #ff0000;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+
+  .yt-button:hover {
+    background: #cc0000;
+  }
+</style>
 
     <section id="applications">
       <div class="container">
