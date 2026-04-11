@@ -146,6 +146,10 @@
       </div>
     </section>
 
+<a href="https://youtu.be/LOXqIPtEQxk" target="_blank" rel="noopener noreferrer">
+  Watch our video
+</a>
+
     <section id="technology">
       <div class="container">
         <h2 class="section-title">Technology</h2>
@@ -166,25 +170,11 @@
         </div>
       </div>
     </section>
-      <a href="https://youtu.be/LOXqIPtEQxk" target="_blank" rel="noopener noreferrer" class="yt-button">
-  Watch on YouTube
+    
+<a href="https://youtu.be/LOXqIPtEQxk" target="_blank" rel="noopener noreferrer">
+  Watch our video
 </a>
 
-<style>
-  .yt-button {
-    display: inline-block;
-    padding: 12px 24px;
-    background: #ff0000;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-  }
-
-  .yt-button:hover {
-    background: #cc0000;
-  }
-</style>
     <section id="applications">
       <div class="container">
         <h2 class="section-title">Applications</h2>
