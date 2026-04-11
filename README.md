@@ -117,7 +117,7 @@
         <span>ACBM</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="#technology">Technology</a>
+        <a href="#t.0echnology">Technology</a>
         <a href="#applications">Applications</a>
         <a href="#ip">IP</a>
         <a href="#contact">Contact</a>
@@ -166,7 +166,25 @@
         </div>
       </div>
     </section>
+      <a href="https://youtu.be/LOXqIPtEQxk" target="_blank" rel="noopener noreferrer" class="yt-button">
+  Watch on YouTube
+</a>
 
+<style>
+  .yt-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #ff0000;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+
+  .yt-button:hover {
+    background: #cc0000;
+  }
+</style>
     <section id="applications">
       <div class="container">
         <h2 class="section-title">Applications</h2>
