@@ -195,6 +195,15 @@
         </div>
       </div>
     </section>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/6pty-EGP6hw"
+  title="YouTube video player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
     
 <a href="https://youtu.be/6pty-EGP6hw" target="_blank" rel="noopener noreferrer" class="yt-button">
   Watch on YouTube 2 - compensation before and after
