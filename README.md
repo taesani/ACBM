@@ -159,6 +159,7 @@
   Watch on YouTube 1 - Real Test
 </a>
 
+<!--
 <style>
   .yt-button {
     display: inline-block;
@@ -174,6 +175,7 @@
     background: #cc0000;
   }
 </style>
+-->
 
     <section id="technology">
       <div class="container">
@@ -204,7 +206,8 @@
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
 </iframe>
-    
+
+<!--    
 <a href="https://youtu.be/6pty-EGP6hw" target="_blank" rel="noopener noreferrer" class="yt-button">
   Watch on YouTube 2 - compensation before and after
 </a>
@@ -224,6 +227,7 @@
     background: #cc0000;
   }
 </style>
+-->
 
     <section id="applications">
       <div class="container">
