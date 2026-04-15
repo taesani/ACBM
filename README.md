@@ -252,8 +252,9 @@
 
 <!--     
 <img src="./images/image1.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
--->
+
 <img src="./images/image2.png" alt="ACBM technology" width="1200" height="750" loading="lazy">
+-->
 
     <section id="ip">
       <div class="container two-col">
