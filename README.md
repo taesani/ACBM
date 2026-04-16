@@ -126,6 +126,8 @@
     </div>
   </header>
 
+<img src="./images/acbmsoftware1.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
+
   <main id="top">
     <section class="hero">
       <div class="container hero-grid">
@@ -139,8 +141,7 @@
           </div>
         </div>
 
-          <img src="./images/acbmsoftware1.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
-          <img src="./images/acbmsoftware2.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
+        <img src="./images/acbmsoftware2.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
 
         <aside class="hero-card" aria-label="Highlights">
           <div class="stat"><strong>Core idea</strong><span>Adaptive compensation</span></div>
