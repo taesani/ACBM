@@ -263,27 +263,26 @@
 -->
 
     <section id="ip">
-      <div class="container two-col">
-        <div class="panel">
-          <h2 class="section-title">IP focus</h2>
-          <p class="section-copy">This present patented and patent-pending work, commercialization themes, and partnership opportunities in a compact format suitable for investors, licensees, and engineering teams.</p>
-          <ul class="list">
-            <li>Adaptive compensation methodology.</li>
-            <li>Display calibration architecture.</li>
-            <li>Memory-efficient correction frameworks.</li>
-            <li>Potential licensing and technical collaboration pathways.</li>
-          </ul>
-        </div>
-        <div class="contact-card" id="contact">
-          <h2 class="section-title">Contact</h2>
-          <p class="section-copy"> Contact freely for your business needs, please.</p>
-          <div><strong>Email</strong><br>acbm@acbmai.de</div>
-          <div><strong>Location</strong><br>Frankfurt, Germany</div>
-          <div><strong>Focus</strong><br>Display technology, compensation IP, and collaboration inquiries</div>
-          <a class="btn btn-primary" href="mailto:acbm@acbmai.de">Email ACBM AI</a>
-        </div>
-      </div>
-    </section>
+  <div class="container two-col">
+    
+    <div class="panel">
+      <h2 class="section-title">IP focus</h2>
+      <p class="section-copy">...</p>
+      <ul class="list">
+        <li>Adaptive compensation methodology.</li>
+        <li>...</li>
+      </ul>
+    </div>
+
+    <div class="contact-card" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-copy">...</p>
+      <div><strong>Email</strong><br>acbm@acbmai.de</div>
+      <a class="btn btn-primary" href="mailto:acbm@acbmai.de">Email ACBM AI</a>
+    </div>
+
+  </div> </section>
+
   </main>
 
   <footer>
