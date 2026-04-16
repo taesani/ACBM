@@ -58,7 +58,7 @@
     .btn-secondary { border-color: var(--line); background: rgba(255,255,255,.65); }
     .hero { padding: 72px 0 44px; }
     .hero-grid {
-      display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: stretch;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch;
     }
     .eyebrow {
       display: inline-flex; padding: 8px 12px; border-radius: 999px; background: var(--accent);
