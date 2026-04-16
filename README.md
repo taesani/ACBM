@@ -83,7 +83,7 @@
     .feature { padding: 22px; }
     .feature h3 { margin: 0 0 10px; font-size: 20px; }
     .feature p { margin: 0; color: var(--muted); }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;align-items: start;}
     .panel { padding: 24px; }
     .list { margin: 14px 0 0; padding-left: 18px; color: var(--muted); }
     .list li { margin: 8px 0; }
