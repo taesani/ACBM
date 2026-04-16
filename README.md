@@ -136,7 +136,7 @@
         <div>
           <span class="eyebrow">Adaptive Compensation for Advanced Displays</span>
           <h1>Scalable display compensation designed for uniformity, luminance control, and manufacturable calibration.</h1>
-          <p>ACBM introduces a practical methodology for display compensation across advanced panels, with emphasis on real-time correction, reduced memory burden, and implementation paths relevant to OLED, MicroLED, and emerging XR display systems.</p>
+          <p>ACBM introduces a practical methodology for display compensation, with emphasis on real-time correction, reduced memory burden, and implementation paths relevant to OLED, MicroLED, and emerging XR display systems.</p>
           <div class="actions">
             <a class="btn btn-primary" href="#technology">Explore technology</a>
                         <a class="btn btn-secondary" href="#ip">View IP focus</a>
@@ -266,7 +266,7 @@
       <div class="container two-col">
         <div class="panel">
           <h2 class="section-title">IP focus</h2>
-          <p class="section-copy">This present patented and patent-pending work, commercialization themes, and partnership opportunities in a compact format suitable for investors, licensees, and engineering teams.</p>
+          <p class="section-copy">This present patented and patent-pending work, commercialization themes, and partnership opportunities, licensees, and engineering teams.</p>
           <ul class="list">
             <li>Adaptive compensation methodology.</li>
             <li>Display calibration architecture.</li>
