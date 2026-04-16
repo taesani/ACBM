@@ -136,7 +136,7 @@
         <span>ACBM</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="#t.0echnology">Technology</a>
+        <a href="#technology">Technology</a>
         <a href="#applications">Applications</a>
         <a href="#ip">IP</a>
         <a href="#contact">Contact</a>
