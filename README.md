@@ -151,9 +151,8 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Adaptive Compensation for Advanced Displays</span>
-          <h1>Scalable display compensation designed for uniformity, luminance control, and manufacturable calibration.</h1>
-          <p>ACBM introduces a practical methodology for display compensation, with emphasis on real-time correction, reduced memory burden, and implementation paths relevant to OLED, MicroLED, and emerging XR display systems.</p>
+          <h1>Adaptive Compensation for Advanced Displays</h1>
+          <p> Scalable display compensation designed for uniformity, luminance control, and manufacturable calibration. ACBM introduces a practical methodology for display compensation, with emphasis on real-time correction, reduced memory burden, and implementation paths relevant to OLED, MicroLED, and emerging XR display systems.</p>
           <div class="actions">
             <a class="btn btn-primary" href="#technology">Explore technology</a>
                         <a class="btn btn-secondary" href="#ip">View IP focus</a>
