@@ -126,8 +126,6 @@
     </div>
   </header>
 
-  <img src="./images/acbmsoftware1.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
-  <img src="./images/acbmsoftware2.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
   <main id="top">
     <section class="hero">
       <div class="container hero-grid">
@@ -137,9 +135,13 @@
           <p>ACBM introduces a practical methodology for display compensation across advanced panels, with emphasis on real-time correction, reduced memory burden, and implementation paths relevant to OLED, MicroLED, and emerging XR display systems.</p>
           <div class="actions">
             <a class="btn btn-primary" href="#technology">Explore technology</a>
-            <a class="btn btn-secondary" href="#ip">View IP focus</a>
+                        <a class="btn btn-secondary" href="#ip">View IP focus</a>
           </div>
         </div>
+
+          <img src="./images/acbmsoftware1.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
+          <img src="./images/acbmsoftware2.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
+
         <aside class="hero-card" aria-label="Highlights">
           <div class="stat"><strong>Core idea</strong><span>Adaptive compensation</span></div>
           <div class="stat"><strong>Target domains</strong><span>OLED · MicroLED · XR</span></div>
