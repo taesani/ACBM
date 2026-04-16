@@ -126,12 +126,12 @@
     </div>
   </header>
 
-<img src="./images/acbmsoftware1.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
 
   <main id="top">
     <section class="hero">
       <div class="container hero-grid">
         <div>
+          <img src="./images/acbmsoftware1.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
           <span class="eyebrow">Adaptive Compensation for Advanced Displays</span>
           <h1>Scalable display compensation designed for uniformity, luminance control, and manufacturable calibration.</h1>
           <p>ACBM introduces a practical methodology for display compensation across advanced panels, with emphasis on real-time correction, reduced memory burden, and implementation paths relevant to OLED, MicroLED, and emerging XR display systems.</p>
