@@ -126,7 +126,7 @@
     </div>
   </header>
 
- <img src="./images/acbmsoftware1.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
+ <img src="./images/acbmsoftware1.jpg" alt="ACBM software1" width="1200" height="750" loading="lazy">
 
   <main id="top">
     <section class="hero">
@@ -140,8 +140,6 @@
                         <a class="btn btn-secondary" href="#ip">View IP focus</a>
           </div>
         </div>
-<img src="./images/acbmsoftware2.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
-
         <aside class="hero-card" aria-label="Highlights">
           <div class="stat"><strong>Core idea</strong><span>Adaptive compensation</span></div>
           <div class="stat"><strong>Target domains</strong><span>OLED · MicroLED · XR</span></div>
@@ -149,6 +147,8 @@
         </aside>
       </div>
     </section>
+
+<img src="./images/acbmsoftware2.jpg" alt="ACBM software2" width="1200" height="750" loading="lazy">
 
 <iframe
   width="560"
