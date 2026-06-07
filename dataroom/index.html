@@ -3,156 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUMI IP Data Room</title>
+    <title>ACBM Data Room</title>
     <style>
         :root {
-            --primary-color: #1e293b;
-            --secondary-color: #0f172a;
+            --primary-color: #0f172a;
             --accent-color: #2563eb;
             --bg-color: #f8fafc;
             --card-bg: #ffffff;
             --text-color: #334155;
-            --border-color: #e2e8f0;
+            --border-color: #cbd5e1;
+            --subfolder-bg: #f1f5f9;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.5;
             margin: 0;
             padding: 40px 20px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             padding-bottom: 20px;
-            border-bottom: 2px solid var(--border-color);
+            border-bottom: 2px solid #e2e8f0;
         }
 
         header h1 {
-            color: var(--secondary-color);
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-size: 2.4rem;
+            margin: 0 0 8px 0;
+            font-weight: 800;
         }
 
         header p {
             color: #64748b;
             font-size: 1.1rem;
+            margin: 0;
         }
 
-        .notice-board {
-            background-color: #eff6ff;
-            border-left: 4px solid var(--accent-color);
-            padding: 20px;
+        .security-notice {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 15px 20px;
             border-radius: 8px;
             margin-bottom: 30px;
+            font-size: 0.95rem;
+            color: #9a3412;
         }
 
-        .notice-board h3 {
-            margin-top: 0;
-            color: #1e40af;
-        }
-
-        .notice-board ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        .folder-tree {
+        .dataroom-tree {
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        .folder {
-            margin-bottom: 15px;
+        /* 대분류 폴더 스타일 */
+        .main-folder {
+            margin-bottom: 25px;
+        }
+        .main-folder:last-child {
+            margin-bottom: 0;
         }
 
         .folder-title {
+            font-size: 1.15rem;
             font-weight: 700;
-            color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 8px 12px;
+            background-color: #f1f5f9;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 1.1rem;
-            padding: 6px 0;
         }
 
-        .folder-title span.badge {
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 9999px;
-            font-weight: 500;
-        }
-
-        .level-1 { background-color: #e2e8f0; color: #334155; }
-        .level-2 { background-color: #fef3c7; color: #92400e; }
-        .level-3 { background-color: #fee2e2; color: #991b1b; }
-
-        .file-list {
+        /* 하위 항목 리스트 */
+        .tree-content {
             list-style: none;
-            padding-left: 28px;
-            margin: 5px 0 15px 0;
-            border-left: 1px dashed var(--border-color);
+            padding-left: 24px;
+            margin: 8px 0 0 0;
+            border-left: 1.5px dashed var(--border-color);
         }
 
+        /* 서브 폴더 스타일 */
+        .sub-folder {
+            margin: 10px 0;
+            background: #fafafa;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 10px;
+        }
+        .sub-folder-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 파일 항목 레이아웃 */
         .file-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: background 0.2s;
+            padding: 6px 10px;
+            border-radius: 4px;
+            gap: 15px;
         }
-
         .file-item:hover {
-            background-color: #f1f5f9;
+            background-color: #f8fafc;
         }
 
-        .file-name {
+        .file-info {
             display: flex;
             align-items: center;
             gap: 8px;
+            font-family: Consolas, Monaco, monospace; /* 파일명 가독성을 위한 고정폭 글꼴 */
+            font-size: 0.9rem;
             color: #475569;
+            word-break: break-all;
         }
 
-        /* 중요: 보안을 위해 실제 파일 경로를 노출하지 않고 함수를 호출하도록 세팅 */
-        .download-btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 6px 12px;
+        .empty-text {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-style: italic;
+            padding-left: 24px;
+        }
+
+        /* 다운로드 버튼 */
+        .dl-btn {
+            background-color: #ffffff;
+            color: var(--accent-color);
+            border: 1px solid #bfdbfe;
+            padding: 4px 10px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .dl-btn:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
         }
 
-        .download-btn:hover {
-            background-color: #1d4ed8;
+        .restricted-badge {
+            background-color: #fee2e2;
+            color: #991b1b;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
         }
 
         footer {
             text-align: center;
-            margin-top: 5px;
+            margin-top: 40px;
             color: #94a3b8;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <header>
+        <h1>ACBM Data Room</h1>
+        <p>acbmai.de</p>
+    </header>
+
+    <div class="security-notice">
+        🔒 <strong>보안 고지:</strong> 본 데이터룸의 모든 파일 다운로드 및 열람 이력은 보안 감사 로그(Audit Log)에 실시간으로 기록됩니다. 허가되지 않은 제3자 제공을 금합니다.
+    </div>
+    <div class="container">
     <header>
         <h1>JUMI Intellectual Property Data Room</h1>
         <p>M&A/투자 유치 자문 및 실사 파트너 공유 공간</p>
@@ -172,114 +210,144 @@
         </ul>
     </div>
 
-    <!-- 폴더 구조 세션 -->
-    <div class="folder-tree">
-        
+    <div class="dataroom-tree">
+
         <!-- 1. Patent Portfolio -->
-        <div class="folder">
-            <div class="folder-title">
-                📁 1. Patent Portfolio <span class="badge level-1">Level 1 - PUBLIC/NDA</span>
-            </div>
-            <ul class="file-list">
-                <li class="file-item">
-                    <span class="file-name">📄 US_12112233_US_InventionPatent.pdf</span>
-                    <button class="download-btn" onclick="secureDownload('patent_us_12112233')">다운로드</button>
-                </li>
-                <li class="file-item">
-                    <span class="file-name">📄 KR_1020215567_Biopdf.pdf</span>
-                    <button class="download-btn" onclick="secureDownload('patent_kr_1020215567')">다운로드</button>
-                </li>
-                <li class="file-item">
-                    <span class="file-name">📄 PatentAssessment_Document.pdf</span>
-                    <button class="download-btn" onclick="secureDownload('patent_assessment')">다운로드</button>
-                </li>
+        <div class="main-folder">
+            <div class="folder-title">📁 1. Patent Portfolio</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📄 US_8711136_B2_GrantedPatent.pdf</div><button class="dl-btn" onclick="downloadFile('US_8711136_B2_GrantedPatent.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 US_10419646_B2_GrantedPatent.pdf</div><button class="dl-btn" onclick="downloadFile('US_10419646_B2_GrantedPatent.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 KR_101272367_B1.pdf</div><button class="dl-btn" onclick="downloadFile('KR_101272367_B1.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 KR_101641901_B1.pdf</div><button class="dl-btn" onclick="downloadFile('KR_101641901_B1.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 KR_101510690_B1.pdf</div><button class="dl-btn" onclick="downloadFile('KR_101510690_B1.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 JP_5606467_B2.pdf</div><button class="dl-btn" onclick="downloadFile('JP_5606467_B2.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 TW_I446324_B.pdf</div><button class="dl-btn" onclick="downloadFile('TW_I446324_B.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 MaintenanceFees_AllCurrent.pdf</div><button class="dl-btn" onclick="downloadFile('MaintenanceFees_AllCurrent.pdf')">다운로드</button></li>
             </ul>
         </div>
 
         <!-- 2. Claim Charts -->
-        <div class="folder">
-            <div class="folder-title">
-                📁 2. Claim Charts <span class="badge level-2">Level 2 - CONFIDENTIAL</span>
+        <div class="main-folder">
+            <div class="folder-title">📁 2. Claim Charts</div>
+            <div class="tree-content">
+                <!-- Samsung Subfolder -->
+                <div class="sub-folder">
+                    <div class="sub-folder-title">📁 Samsung</div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_US8711136_Samsung_S6xx_v1.0.pdf</div><button class="dl-btn" onclick="downloadFile('ClaimChart_US8711136_Samsung_S6xx_v1.0.pdf')">다운로드</button></div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_US10419646_Samsung_SDC_v1.0.pdf</div><button class="dl-btn" onclick="downloadFile('ClaimChart_US10419646_Samsung_SDC_v1.0.pdf')">다운로드</button></div>
+                </div>
+                <!-- LX_Semiconductor Subfolder -->
+                <div class="sub-folder">
+                    <div class="sub-folder-title">📁 LX_Semiconductor</div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_US8711136_LXS_v1.0.pdf</div><button class="dl-btn" onclick="downloadFile('ClaimChart_US8711136_LXS_v1.0.pdf')">다운로드</button></div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_KR101272367_LXS_v1.0.pdf</div><button class="dl-btn" onclick="downloadFile('ClaimChart_KR101272367_LXS_v1.0.pdf')">다운로드</button></div>
+                </div>
+                <!-- Empty Subfolders -->
+                <div class="sub-folder"><div class="sub-folder-title">📁 Apple</div><span class="empty-text">No files available</span></div>
+                <div class="sub-folder"><div class="sub-folder-title">📁 Meta</div><span class="empty-text">No files available</span></div>
+                <div class="sub-folder"><div class="sub-folder-title">📁 Synaptics</div><span class="empty-text">No files available</span></div>
+                <div class="sub-folder"><div class="sub-folder-title">📁 Novatek</div><span class="empty-text">No files available</span></div>
             </div>
-            <ul class="file-list">
-                <li class="file-item">
-                    <span class="file-name">📄 ClaimChart_US12112233_Samsung_Semiconductor_v1.0.pdf</span>
-                    <button class="download-btn" onclick="secureDownload('cc_samsung_semi')">다운로드</button>
-                </li>
-                <li class="file-item">
-                    <span class="file-name">📄 ClaimChart_US10234567_Apple_v1.2.pdf</span>
-                    <button class="download-btn" onclick="secureDownload('cc_apple')">다운로드</button>
-                </li>
-            </ul>
         </div>
 
         <!-- 3. Technical Evidence -->
-        <div class="folder">
-            <div class="folder-title">
-                📁 3. Technical Evidence <span class="badge level-2">Level 2 - CONFIDENTIAL</span>
+        <div class="main-folder">
+            <div class="folder-title">📁 3. Technical Evidence</div>
+            <div class="tree-content">
+                <div class="sub-folder">
+                    <div class="sub-folder-title">📁 Decap_Reports</div>
+                    <div class="file-item"><div class="file-info">📄 Samsung_S6xx_DDIC_Decap_Report.pdf</div><button class="dl-btn" onclick="downloadFile('Samsung_S6xx_DDIC_Decap_Report.pdf')">다운로드</button></div>
+                    <div class="file-item"><div class="file-info">📄 LXS_OLED_Driver_Decap_Report.pdf</div><button class="dl-btn" onclick="downloadFile('LXS_OLED_Driver_Decap_Report.pdf')">다운로드</button></div>
+                </div>
+                <div class="sub-folder">
+                    <div class="sub-folder-title">📁 Simulation_Data</div>
+                    <div class="file-item"><div class="file-info">🎬 ACBM_LiveSimulation_Comparison.mp4</div><button class="dl-btn" onclick="downloadFile('ACBM_LiveSimulation_Comparison.mp4')">다운로드</button></div>
+                </div>
+                <div class="sub-folder">
+                    <div class="sub-folder-title">📁 Reverse_Engineering</div>
+                    <div class="file-item"><div class="file-info">📄 FCC_Filing_Analysis_Samsung.pdf</div><button class="dl-btn" onclick="downloadFile('FCC_Filing_Analysis_Samsung.pdf')">다운로드</button></div>
+                </div>
             </div>
-            <ul class="file-list">
-                <li class="file-item">
-                    <span class="file-name">📄 Teardown_Report_Samsung_Exynos.pdf</span>
-                    <button class="download-btn" onclick="secureDownload('teardown_exynos')">다운로드</button>
-                </li>
-                <li class="file-item">
-                    <span class="file-name">📄 Circuit_Analysis_Apple_A16.pdf</span>
-                    <button class="download-btn" onclick="secureDownload('circuit_apple_a16')">--> 다운로드</button>
-                </li>
+        </div>
+
+        <!-- 4. Damages & Financials -->
+        <div class="main-folder">
+            <div class="folder-title">📁 4. Damages & Financials</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📊 GeorgiaPacific_Analysis_v2.xlsx</div><button class="dl-btn" onclick="downloadFile('GeorgiaPacific_Analysis_v2.xlsx')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📊 RoyaltyBase_Calculation_AllDefendants.xlsx</div><button class="dl-btn" onclick="downloadFile('RoyaltyBase_Calculation_AllDefendants.xlsx')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 DamagesSummary_Conservative_Aggressive.pdf</div><button class="dl-btn" onclick="downloadFile('DamagesSummary_Conservative_Aggressive.pdf')">다운로드</button></li>
             </ul>
         </div>
 
-        <!-- 4. Damages & Economics -->
-        <div class="folder">
-            <div class="folder-title">
-                📁 4. Damages & Economics <span class="badge level-3">Level 3 - RESTRICTED</span>
-            </div>
-            <ul class="file-list">
-                <li class="file-item">
-                    <span class="file-name">📄 RoyaltyRate_Calculation_&_Defensibility.xlsx</span>
-                    <button class="download-btn" onclick="secureDownload('royalty_calc')">다운로드</button>
-                </li>
-                <li class="file-item">
-                    <span class="file-name">📄 RevenueSummary_Conservative_Aggressive.pdf</span>
-                    <button class="download-btn" onclick="secureDownload('revenue_summary')">다운로드</button>
-                </li>
+        <!-- 5. Prior Art & Validity -->
+        <div class="main-folder">
+            <div class="folder-title">📁 5. Prior Art & Validity</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📄 PriorArtSearch_US8711136_Report.pdf</div><button class="dl-btn" onclick="downloadFile('PriorArtSearch_US8711136_Report.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 PriorArtSearch_US10419646_Report.pdf</div><button class="dl-btn" onclick="downloadFile('PriorArtSearch_US10419646_Report.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 ValidityOpinion_Summary.pdf</div><button class="dl-btn" onclick="downloadFile('ValidityOpinion_Summary.pdf')">다운로드</button></li>
             </ul>
         </div>
 
-        <!-- 5. Litigation Budget -->
-        <div class="folder">
-            <div class="folder-title">
-                📁 5. Litigation Budget <span class="badge level-3">Level 3 - RESTRICTED</span>
+        <!-- 6. Corporate Documents -->
+        <div class="main-folder">
+            <div class="folder-title">📁 6. Corporate Documents</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📄 JUMI_HoldingLLC_Certificate_of_Formation.pdf</div><button class="dl-btn" onclick="downloadFile('JUMI_HoldingLLC_Certificate_of_Formation.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 IP_Assignment_US8711136_to_JUMI.pdf</div><button class="dl-btn" onclick="downloadFile('IP_Assignment_US8711136_to_JUMI.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 IP_Assignment_US10419646_to_JUMI.pdf</div><button class="dl-btn" onclick="downloadFile('IP_Assignment_US10419646_to_JUMI.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 ChainOfTitle_Complete.pdf</div><button class="dl-btn" onclick="downloadFile('ChainOfTitle_Complete.pdf')">다운로드</button></li>
+            </ul>
+        </div>
+
+        <!-- 7. Infringement Notices (독립 증거) -->
+        <div class="main-folder">
+            <div class="folder-title">📁 7. Infringement Notices (독립 증거)</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📄 Samsung_Notice_2026_03.pdf</div><button class="dl-btn" onclick="downloadFile('Samsung_Notice_2026_03.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0621.pdf</div><button class="dl-btn" onclick="downloadFile('LXS_Notice_2024_0621.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0718.pdf</div><button class="dl-btn" onclick="downloadFile('LXS_Notice_2024_0718.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 Synaptics_Notice_2023_Q1.pdf</div><button class="dl-btn" onclick="downloadFile('Synaptics_Notice_2023_Q1.pdf')">다운로드</button></li>
+                <li class="file-item"><div class="file-info">📄 LGE_LGD_FinalNotice_2026_0525.pdf</div><button class="dl-btn" onclick="downloadFile('LGE_LGD_FinalNotice_2026_0525.pdf')">다운로드</button></li>
+            </ul>
+        </div>
+
+        <!-- 8. Litigation Budget -->
+        <div class="main-folder">
+            <div class="folder-title">📁 8. Litigation Budget</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📊 LitigationBudget_v2.xlsx</div><button class="dl-btn" onclick="downloadFile('LitigationBudget_v2.xlsx')">다운로드</button></li>
+            </ul>
+        </div>
+
+        <!-- 9. [RESTRICTED] Strategy Documents -->
+        <div class="main-folder">
+            <div class="folder-title" style="background-color: #fef2f2; border: 1px solid #fee2e2;">
+                🔒 9. [RESTRICTED] Strategy Documents 
+                <span class="restricted-badge" style="margin-left:auto;">접근 불가능</span>
             </div>
-            <ul class="file-list">
-                <li class="file-item">
-                    <span class="file-name">📄 LitigationBudget_Scenario_v2.xlsx</span>
-                    <button class="download-btn" onclick="secureDownload('litigation_budget')">다운로드</button>
-                </li>
+            <ul class="tree-content" style="border-left-color: #fca5a5;">
+                <span class="empty-text" style="color:#ef4444;">이 폴더의 문서는 귀하의 권한 등급으로 열람할 수 없습니다.</span>
             </ul>
         </div>
 
     </div>
 
     <footer>
-        <p>© 2026 JUMI. All rights reserved. Confidential Data Room.</p>
+        <p>© 2026 ACBM Data Room. All Rights Reserved.</p>
     </footer>
 </div>
 
 <script>
-    /**
-     * 보안 다운로드 핸들러
-     * 정적 페이지 암호화 시, 파일 링크를 복사당하지 않도록 암호화된 내부 로직이나 
-     * 비밀 해시 토큰 방식으로 매핑하여 다운로드를 처리하는 영역입니다.
-     */
-    function secureDownload(fileKey) {
-        // 예시: 다운로드 요청 인지 알림 및 연동 처리 공간
-        alert("보안 정책에 따라 " + fileKey + " 파일 다운로드를 요청합니다. (이력 로그 기록됨)");
+    // 파일 다운로드 보안 핸들러 전역 함수
+    function downloadFile(fileName) {
+        alert("보안 정책에 따라 '" + fileName + "' 파일 다운로드를 요청합니다.\n(열람 로그 보관 완료)");
         
-        // 실제 구현 시: 
-        // 1. 대용량 파일이 아닐 경우 HTML 내부에 Base64로 심어둔 데이터를 다운로드 처리하거나,
-        // 2. 외부 저장소(S3 등)의 시한부 토큰(Presigned URL) 주소로 리다이렉트 시킵니다.
+        // 💡 실운영 가이드: 
+        // 깃허브에 올릴 때 보안 유지를 위해 파일명을 해시값 등으로 무작위 변경하여 매핑하거나,
+        // 이곳에 실제 원본 저장소 주소 연동 처리 로직을 삽입하여 다운로드를 실행하시면 됩니다.
     }
 </script>
 
