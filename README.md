@@ -313,4 +313,40 @@
       </div>
   </footer>
 </body>
+<script>
+    // [보안 스크립트 1] 단축키 차단 (F12, 소스보기, 저장 등)
+    window.addEventListener('keydown', function(e) {
+        // F12 차단
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + Shift + I (개발자 도구 맥/윈도우) 차단
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + Shift + J (콘솔창) 차단
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + U (페이지 소스 보기) 차단
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + S (페이지 저장) 차단
+        if (e.ctrlKey && e.keyCode === 83) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // [보안 스크립트 2] 마우스 우클릭 시 경고문구 (원치 않으면 alert 지우고 return false만 남겨두세요)
+    window.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert("🔒 보안 정책에 의해 마우스 오른쪽 클릭이 금지되어 있습니다.");
+        return false;
+    });
 </html>
