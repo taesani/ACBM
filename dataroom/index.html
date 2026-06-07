@@ -351,7 +351,7 @@
     function viewFile(fileName) {
         alert("보안 정책에 따라 '" + fileName + "' 파일 열람을 요청합니다.\n(열람 로그 보관 완료)");
         
-        let fileUrl = "https://your-storage-domain.com/files/" + encodeURIComponent(fileName);
+        let fileUrl = "https://drive.google.com/drive/u/1/folders/1lhhpmYsx7BG55I4FV48m1tqSav1ps1Re" + encodeURIComponent(fileName);
         
         // 엑셀 파일인 경우 웹 뷰어로 우회 처리하는 예시
         if(fileName.endsWith('.xlsx') || fileName.endsWith('.xls')) {
