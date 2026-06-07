@@ -8,7 +8,7 @@
         :root {
             --primary-color: #0f172a;
             --accent-color: #2563eb;
-            --view-color: #059669; /* 보기 버튼용 초록 계열 색상 */
+            --view-color: #059669; /* view 버튼용 초록 계열 색상 */
             --bg-color: #f8fafc;
             --card-bg: #ffffff;
             --text-color: #334155;
@@ -159,9 +159,10 @@
             font-size: 0.8rem;
             font-weight: 600;
             transition: all 0.2s;
+            text-transform: lowercase; /* 통일감을 위한 소문자 처리 */
         }
 
-        /* 보기 버튼 */
+        /* view 버튼 */
         .view-btn {
             color: var(--view-color);
             border: 1px solid #a7f3d0;
@@ -172,7 +173,7 @@
             border-color: var(--view-color);
         }
 
-        /* 다운로드 버튼 */
+        /* download 버튼 */
         .dl-btn {
             color: var(--accent-color);
             border: 1px solid #bfdbfe;
@@ -221,14 +222,14 @@
         <div class="main-folder">
             <div class="folder-title">📁 1. Patent Portfolio</div>
             <ul class="tree-content">
-                <li class="file-item"><div class="file-info">📄 US_8711136_B2_GrantedPatent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('US_8711136_B2_GrantedPatent.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('US_8711136_B2_GrantedPatent.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 US_10419646_B2_GrantedPatent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('US_10419646_B2_GrantedPatent.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('US_10419646_B2_GrantedPatent.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 KR_101272367_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101272367_B1.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('KR_101272367_B1.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 KR_101641901_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101641901_B1.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('KR_101641901_B1.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 KR_101510690_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101510690_B1.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('KR_101510690_B1.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 JP_5606467_B2.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('JP_5606467_B2.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('JP_5606467_B2.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 TW_I446324_B.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('TW_I446324_B.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('TW_I446324_B.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 MaintenanceFees_AllCurrent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('MaintenanceFees_AllCurrent.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('MaintenanceFees_AllCurrent.pdf')">다운로드</button></div></li>
+                <li class="file-item"><div class="file-info">📄 US_8711136_B2_GrantedPatent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('US_8711136_B2_GrantedPatent.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('US_8711136_B2_GrantedPatent.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 US_10419646_B2_GrantedPatent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('US_10419646_B2_GrantedPatent.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('US_10419646_B2_GrantedPatent.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 KR_101272367_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101272367_B1.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('KR_101272367_B1.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 KR_101641901_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101641901_B1.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('KR_101641901_B1.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 KR_101510690_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101510690_B1.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('KR_101510690_B1.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 JP_5606467_B2.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('JP_5606467_B2.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('JP_5606467_B2.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 TW_I446324_B.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('TW_I446324_B.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('TW_I446324_B.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 MaintenanceFees_AllCurrent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('MaintenanceFees_AllCurrent.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('MaintenanceFees_AllCurrent.pdf')">download</button></div></li>
             </ul>
         </div>
 
@@ -239,14 +240,14 @@
                 <!-- Samsung Subfolder -->
                 <div class="sub-folder">
                     <div class="sub-folder-title">📁 Samsung</div>
-                    <div class="file-item"><div class="file-info">📄 ClaimChart_US8711136_Samsung_S6xx_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_US8711136_Samsung_S6xx_v1.0.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('ClaimChart_US8711136_Samsung_S6xx_v1.0.pdf')">다운로드</button></div></div>
-                    <div class="file-item"><div class="file-info">📄 ClaimChart_US10419646_Samsung_SDC_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_US10419646_Samsung_SDC_v1.0.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('ClaimChart_US10419646_Samsung_SDC_v1.0.pdf')">다운로드</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_US8711136_Samsung_S6xx_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_US8711136_Samsung_S6xx_v1.0.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('ClaimChart_US8711136_Samsung_S6xx_v1.0.pdf')">download</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_US10419646_Samsung_SDC_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_US10419646_Samsung_SDC_v1.0.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('ClaimChart_US10419646_Samsung_SDC_v1.0.pdf')">download</button></div></div>
                 </div>
                 <!-- LX_Semiconductor Subfolder -->
                 <div class="sub-folder">
                     <div class="sub-folder-title">📁 LX_Semiconductor</div>
-                    <div class="file-item"><div class="file-info">📄 ClaimChart_US8711136_LXS_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_US8711136_LXS_v1.0.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('ClaimChart_US8711136_LXS_v1.0.pdf')">다운로드</button></div></div>
-                    <div class="file-item"><div class="file-info">📄 ClaimChart_KR101272367_LXS_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KR101272367_LXS_v1.0.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('ClaimChart_KR101272367_LXS_v1.0.pdf')">다운로드</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_US8711136_LXS_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_US8711136_LXS_v1.0.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('ClaimChart_US8711136_LXS_v1.0.pdf')">download</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_KR101272367_LXS_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KR101272367_LXS_v1.0.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('ClaimChart_KR101272367_LXS_v1.0.pdf')">download</button></div></div>
                 </div>
                 <!-- Empty Subfolders -->
                 <div class="sub-folder"><div class="sub-folder-title">📁 Apple</div><span class="empty-text">No files available</span></div>
@@ -262,16 +263,16 @@
             <div class="tree-content">
                 <div class="sub-folder">
                     <div class="sub-folder-title">📁 Decap_Reports</div>
-                    <div class="file-item"><div class="file-info">📄 Samsung_S6xx_DDIC_Decap_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Samsung_S6xx_DDIC_Decap_Report.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('Samsung_S6xx_DDIC_Decap_Report.pdf')">다운로드</button></div></div>
-                    <div class="file-item"><div class="file-info">📄 LXS_OLED_Driver_Decap_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_OLED_Driver_Decap_Report.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('LXS_OLED_Driver_Decap_Report.pdf')">다운로드</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 Samsung_S6xx_DDIC_Decap_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Samsung_S6xx_DDIC_Decap_Report.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('Samsung_S6xx_DDIC_Decap_Report.pdf')">download</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 LXS_OLED_Driver_Decap_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_OLED_Driver_Decap_Report.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('LXS_OLED_Driver_Decap_Report.pdf')">download</button></div></div>
                 </div>
                 <div class="sub-folder">
                     <div class="sub-folder-title">📁 Simulation_Data</div>
-                    <div class="file-item"><div class="file-info">🎬 ACBM_LiveSimulation_Comparison.mp4</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ACBM_LiveSimulation_Comparison.mp4')">보기</button><button class="btn dl-btn" onclick="downloadFile('ACBM_LiveSimulation_Comparison.mp4')">다운로드</button></div></div>
+                    <div class="file-item"><div class="file-info">🎬 ACBM_LiveSimulation_Comparison.mp4</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ACBM_LiveSimulation_Comparison.mp4')">view</button><button class="btn dl-btn" onclick="downloadFile('ACBM_LiveSimulation_Comparison.mp4')">download</button></div></div>
                 </div>
                 <div class="sub-folder">
                     <div class="sub-folder-title">📁 Reverse_Engineering</div>
-                    <div class="file-item"><div class="file-info">📄 FCC_Filing_Analysis_Samsung.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('FCC_Filing_Analysis_Samsung.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('FCC_Filing_Analysis_Samsung.pdf')">다운로드</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 FCC_Filing_Analysis_Samsung.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('FCC_Filing_Analysis_Samsung.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('FCC_Filing_Analysis_Samsung.pdf')">download</button></div></div>
                 </div>
             </div>
         </div>
@@ -280,9 +281,9 @@
         <div class="main-folder">
             <div class="folder-title">📁 4. Damages & Financials</div>
             <ul class="tree-content">
-                <li class="file-item"><div class="file-info">📊 GeorgiaPacific_Analysis_v2.xlsx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('GeorgiaPacific_Analysis_v2.xlsx')">보기</button><button class="btn dl-btn" onclick="downloadFile('GeorgiaPacific_Analysis_v2.xlsx')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📊 RoyaltyBase_Calculation_AllDefendants.xlsx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('RoyaltyBase_Calculation_AllDefendants.xlsx')">보기</button><button class="btn dl-btn" onclick="downloadFile('RoyaltyBase_Calculation_AllDefendants.xlsx')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 DamagesSummary_Conservative_Aggressive.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('DamagesSummary_Conservative_Aggressive.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('DamagesSummary_Conservative_Aggressive.pdf')">다운로드</button></div></li>
+                <li class="file-item"><div class="file-info">📊 GeorgiaPacific_Analysis_v2.xlsx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('GeorgiaPacific_Analysis_v2.xlsx')">view</button><button class="btn dl-btn" onclick="downloadFile('GeorgiaPacific_Analysis_v2.xlsx')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📊 RoyaltyBase_Calculation_AllDefendants.xlsx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('RoyaltyBase_Calculation_AllDefendants.xlsx')">view</button><button class="btn dl-btn" onclick="downloadFile('RoyaltyBase_Calculation_AllDefendants.xlsx')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 DamagesSummary_Conservative_Aggressive.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('DamagesSummary_Conservative_Aggressive.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('DamagesSummary_Conservative_Aggressive.pdf')">download</button></div></li>
             </ul>
         </div>
 
@@ -290,9 +291,9 @@
         <div class="main-folder">
             <div class="folder-title">📁 5. Prior Art & Validity</div>
             <ul class="tree-content">
-                <li class="file-item"><div class="file-info">📄 PriorArtSearch_US8711136_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('PriorArtSearch_US8711136_Report.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('PriorArtSearch_US8711136_Report.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 PriorArtSearch_US10419646_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('PriorArtSearch_US10419646_Report.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('PriorArtSearch_US10419646_Report.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 ValidityOpinion_Summary.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ValidityOpinion_Summary.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('ValidityOpinion_Summary.pdf')">다운로드</button></div></li>
+                <li class="file-item"><div class="file-info">📄 PriorArtSearch_US8711136_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('PriorArtSearch_US8711136_Report.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('PriorArtSearch_US8711136_Report.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 PriorArtSearch_US10419646_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('PriorArtSearch_US10419646_Report.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('PriorArtSearch_US10419646_Report.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 ValidityOpinion_Summary.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ValidityOpinion_Summary.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('ValidityOpinion_Summary.pdf')">download</button></div></li>
             </ul>
         </div>
 
@@ -300,10 +301,10 @@
         <div class="main-folder">
             <div class="folder-title">📁 6. Corporate Documents</div>
             <ul class="tree-content">
-                <li class="file-item"><div class="file-info">📄 JUMI_HoldingLLC_Certificate_of_Formation.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('JUMI_HoldingLLC_Certificate_of_Formation.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('JUMI_HoldingLLC_Certificate_of_Formation.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 IP_Assignment_US8711136_to_JUMI.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('IP_Assignment_US8711136_to_JUMI.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('IP_Assignment_US8711136_to_JUMI.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 IP_Assignment_US10419646_to_JUMI.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('IP_Assignment_US10419646_to_JUMI.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('IP_Assignment_US10419646_to_JUMI.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 ChainOfTitle_Complete.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ChainOfTitle_Complete.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('ChainOfTitle_Complete.pdf')">다운로드</button></div></li>
+                <li class="file-item"><div class="file-info">📄 JUMI_HoldingLLC_Certificate_of_Formation.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('JUMI_HoldingLLC_Certificate_of_Formation.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('JUMI_HoldingLLC_Certificate_of_Formation.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 IP_Assignment_US8711136_to_JUMI.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('IP_Assignment_US8711136_to_JUMI.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('IP_Assignment_US8711136_to_JUMI.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 IP_Assignment_US10419646_to_JUMI.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('IP_Assignment_US10419646_to_JUMI.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('IP_Assignment_US10419646_to_JUMI.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 ChainOfTitle_Complete.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ChainOfTitle_Complete.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('ChainOfTitle_Complete.pdf')">download</button></div></li>
             </ul>
         </div>
 
@@ -311,11 +312,11 @@
         <div class="main-folder">
             <div class="folder-title">📁 7. Infringement Notices (독립 증거)</div>
             <ul class="tree-content">
-                <li class="file-item"><div class="file-info">📄 Samsung_Notice_2026_03.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Samsung_Notice_2026_03.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('Samsung_Notice_2026_03.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0621.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_Notice_2024_0621.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('LXS_Notice_2024_0621.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0718.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_Notice_2024_0718.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('LXS_Notice_2024_0718.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 Synaptics_Notice_2023_Q1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Synaptics_Notice_2023_Q1.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('Synaptics_Notice_2023_Q1.pdf')">다운로드</button></div></li>
-                <li class="file-item"><div class="file-info">📄 LGE_LGD_FinalNotice_2026_0525.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGE_LGD_FinalNotice_2026_0525.pdf')">보기</button><button class="btn dl-btn" onclick="downloadFile('LGE_LGD_FinalNotice_2026_0525.pdf')">다운로드</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Samsung_Notice_2026_03.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Samsung_Notice_2026_03.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('Samsung_Notice_2026_03.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0621.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_Notice_2024_0621.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('LXS_Notice_2024_0621.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0718.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_Notice_2024_0718.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('LXS_Notice_2024_0718.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Synaptics_Notice_2023_Q1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Synaptics_Notice_2023_Q1.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('Synaptics_Notice_2023_Q1.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 LGE_LGD_FinalNotice_2026_0525.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGE_LGD_FinalNotice_2026_0525.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('LGE_LGD_FinalNotice_2026_0525.pdf')">download</button></div></li>
             </ul>
         </div>
 
@@ -323,7 +324,7 @@
         <div class="main-folder">
             <div class="folder-title">📁 8. Litigation Budget</div>
             <ul class="tree-content">
-                <li class="file-item"><div class="file-info">📊 LitigationBudget_v2.xlsx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LitigationBudget_v2.xlsx')">보기</button><button class="btn dl-btn" onclick="downloadFile('LitigationBudget_v2.xlsx')">다운로드</button></div></li>
+                <li class="file-item"><div class="file-info">📊 LitigationBudget_v2.xlsx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LitigationBudget_v2.xlsx')">view</button><button class="btn dl-btn" onclick="downloadFile('LitigationBudget_v2.xlsx')">download</button></div></li>
             </ul>
         </div>
 
@@ -350,15 +351,10 @@
     function viewFile(fileName) {
         alert("보안 정책에 따라 '" + fileName + "' 파일 열람을 요청합니다.\n(열람 로그 보관 완료)");
         
-        // 💡 실운영 가이드: 
-        // 1) PDF, MP4, 이미지 등은 브라우저가 직접 열 수 있으므로 파일 주소를 입력하면 바로 뷰어로 작동합니다.
-        // 2) 엑셀(.xlsx) 파일의 경우 바로 열리지 않으므로, 실운영 환경에서는 '구글 문서 뷰어'나 '오피스 온라인 뷰어' 주소를 앞에 붙여서 열 수 있습니다.
-        
         let fileUrl = "https://your-storage-domain.com/files/" + encodeURIComponent(fileName);
         
-        // 만약 엑셀 파일인 경우 웹 뷰어로 우회 처리하는 예시 코드
+        // 엑셀 파일인 경우 웹 뷰어로 우회 처리하는 예시
         if(fileName.endsWith('.xlsx') || fileName.endsWith('.xls')) {
-            // 구글 문서 뷰어 연동 예시
             fileUrl = "https://docs.google.com/gview?url=" + encodeURIComponent(fileUrl) + "&embedded=true";
         }
         
