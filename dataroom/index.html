@@ -316,7 +316,7 @@
                 <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0621.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_Notice_2024_0621.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('LXS_Notice_2024_0621.pdf')">download</button></div></li>
                 <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0718.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_Notice_2024_0718.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('LXS_Notice_2024_0718.pdf')">download</button></div></li>
                 <li class="file-item"><div class="file-info">📄 Synaptics_Notice_2023_Q1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Synaptics_Notice_2023_Q1.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('Synaptics_Notice_2023_Q1.pdf')">download</button></div></li>
-                <li class="file-item"><div class="file-info">📄 LGE_LGD_FinalNotice_2026_0525.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGE_LGD_FinalNotice_2026_0525.pdf','https://drive.google.com/drive/u/1/folders/1lhhpmYsx7BG55I4FV48m1tqSav1ps1Re')">view</button><button class="btn dl-btn" onclick="downloadFile('LGE_LGD_FinalNotice_2026_0525.pdf')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 LGE_LGD_FinalNotice_2026_0525.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGE_LGD_FinalNotice_2026_0525.pdf')">view</button><button class="btn dl-btn" onclick="downloadFile('LGE_LGD_FinalNotice_2026_0525.pdf')">download</button></div></li>
             </ul>
         </div>
 
@@ -347,27 +347,26 @@
 </div>
 
 <script>
-    // 1. 파일 바로 보기 (브라우저 내장 뷰어 연동) 핸들러
+    // 1. 모든 파일 공통 구글 드라이브 열람(View) 핸들러
     function viewFile(fileName) {
         alert("보안 정책에 따라 '" + fileName + "' 파일 열람을 요청합니다.\n(열람 로그 보관 완료)");
         
-        let fileUrl = "https://drive.google.com/drive/u/1/folders/1lhhpmYsx7BG55I4FV48m1tqSav1ps1Re" + encodeURIComponent(fileName);
+        // 요청하신 특정 구글 드라이브 주소로 고정 설정
+        let fileUrl = "https://drive.google.com/file/d/1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu0u/view?ts=6a252146";
         
-        // 엑셀 파일인 경우 웹 뷰어로 우회 처리하는 예시
-        if(fileName.endsWith('.xlsx') || fileName.endsWith('.xls')) {
-            fileUrl = "https://docs.google.com/gview?url=" + encodeURIComponent(fileUrl) + "&embedded=true";
-        }
-        
-        // 새 창(탭)으로 파일 주소 오픈 -> 브라우저 뷰어 연결
+        // 새 창(탭)으로 구글 드라이브 문서 뷰어 오픈
         window.open(fileUrl, '_blank');
     }
 
-    // 2. 파일 다운로드 보안 핸들러 전역 함수
+    // 2. 모든 파일 공통 구글 드라이브 다운로드 핸들러
     function downloadFile(fileName) {
         alert("보안 정책에 따라 '" + fileName + "' 파일 다운로드를 요청합니다.\n(열람 로그 보관 완료)");
         
-        // 실제 다운로드 주소 처리 예시
-        // window.location.href = "https://your-storage-domain.com/download/" + encodeURIComponent(fileName);
+        // 구글 드라이브 공유 주소의 ID값을 이용한 직통 다운로드 주소 링크 설정
+        let downloadUrl = "https://drive.google.com/uc?export=download&id=1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu0u";
+        
+        // 새 창에서 다운로드 작업 수행
+        window.open(downloadUrl, '_blank');
     }
 </script>
 
