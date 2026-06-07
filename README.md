@@ -141,7 +141,7 @@
         <a href="#ip">IP</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="btn btn-secondary" href="https://www.acbmai.de/dataroom/index-p.html">DATA ROOM</a>
+      <a class="btn btn-secondary" href="https://www.acbmai.de/dataroom/index.html">DATA ROOM</a>
     </div>
   </header>
 
@@ -303,7 +303,7 @@
 
   </div> </section>
 
-  <a href="https://www.acbmai.de/dataroom/index.html" target="_blank">Move to DATA ROOM </a>
+  <a href="https://www.acbmai.de/dataroom/index-p.html" target="_blank">Move to DATA ROOM </a>
 
   
   </main>
