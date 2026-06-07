@@ -3,24 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACBM Data Room</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #2563eb;
+            --view-color: #059669; /* view 버튼용 초록 계열 색상 */
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --border-color: #cbd5e1;
+            --subfolder-bg: #f1f5f9;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 2.4rem;
+            margin: 0 0 8px 0;
+            font-weight: 800;
+        }
+
+        header p {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .security-notice {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            color: #9a3412;
+        }
+
+        .dataroom-tree {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        /* 대분류 폴더 스타일 */
+        .main-folder {
+            margin-bottom: 25px;
+        }
+        .main-folder:last-child {
+            margin-bottom: 0;
+        }
+
+        .folder-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            padding: 8px 12px;
+            background-color: #f1f5f9;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 하위 항목 리스트 */
+        .tree-content {
+            list-style: none;
+            padding-left: 24px;
+            margin: 8px 0 0 0;
+            border-left: 1.5px dashed var(--border-color);
+        }
+
+        /* 서브 폴더 스타일 */
+        .sub-folder {
+            margin: 10px 0;
+            background: #fafafa;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 10px;
+        }
+        .sub-folder-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 파일 항목 레이아웃 */
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 10px;
+            border-radius: 4px;
+            gap: 15px;
+        }
+        .file-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.9rem;
+            color: #475569;
+            word-break: break-all;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .empty-text {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-style: italic;
+            padding-left: 24px;
+        }
+
+        /* 공통 버튼 스타일 */
+        .btn {
+            background-color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-transform: lowercase; /* 통일감을 위한 소문자 처리 */
+        }
+
+        /* view 버튼 */
+        .view-btn {
+            color: var(--view-color);
+            border: 1px solid #a7f3d0;
+        }
+        .view-btn:hover {
+            background-color: var(--view-color);
+            color: #ffffff;
+            border-color: var(--view-color);
+        }
+
+        /* download 버튼 */
+        .dl-btn {
+            color: var(--accent-color);
+            border: 1px solid #bfdbfe;
+        }
+        .dl-btn:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
+        }
+
+        .restricted-badge {
+            background-color: #fee2e2;
+            color: #991b1b;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
 <div class="container">
     <header>
         <h1>JUMI Intellectual Property Data Room</h1>
         <p>M&A/투자 유치 자문 및 실사 파트너 공유 공간</p>
-        <p> Shared space for M&A/investment attraction advisory and due diligence partners</p>
+        <p>Shared space for M&A/investment attraction advisory and due diligence partners</p>
     </header>
 
-    <!-- 보안 및 접근 지침 공지 (image_78146b.jpg 참고 반영) -->
-    <div class="notice-board">
-        <h3>⚠️ 데이터룸 이용 및 보안 지침</h3>
-        <ul>
-            <li>본 데이터룸의 모든 자산은 등급별 접근 권한(Level 1~3)에 따라 철저히 통제됩니다.</li>
-            <li>Access to all assets in this data room is strictly controlled based on tiered access rights (Levels 1–3).</li>
-            <li><strong>캡처 및 외부 유출 금지:</strong> 모든 문서 열람 및 다운로드 이력은 실시간 오디트 로그(Audit Log)로 기록됩니다.</li>
-            <li><strong>Prohibition of screen capture and unauthorized external disclosure:</strong> All document viewing and downloading activities are recorded in real-time audit logs.</li>
-            <li>허가되지 않은 제3자에게 비밀번호를 공유하는 행위는 엄격히 금지됩니다.</li>
-            <li>Sharing passwords with unauthorized third parties is strictly prohibited.</li>
-        </ul>
+    <div class="security-notice">
+        🔒 <strong>보안 고지:</strong> 본 데이터룸의 모든 파일 다운로드 및 열람 이력은 보안 감사 로그(Audit Log)에 실시간으로 기록됩니다. 허가되지 않은 제3자 제공을 금합니다. 
+        All file download and viewing activity within this data room is recorded in real-time in the security audit log. Unauthorized disclosure to third parties is prohibited.
+        본 데이터룸의 모든 자산은 등급별 접근 권한(Level 1~3)에 따라 철저히 통제됩니다. Access to all assets in this data room is strictly controlled based on tiered access rights (Levels 1–3).
     </div>
     
     <!DOCTYPE html>
