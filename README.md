@@ -304,16 +304,9 @@
   </div> </section>
 
   <a href="https://www.acbmai.de/dataroom/index-p.html" target="_blank">Move to DATA ROOM </a>
-
   
   </main>
-  <footer>
-    <div class="container footer-box">
-      <div>© ACBM AI</div>
-      </div>
-  </footer>
-</body>
-<script>
+  <script>
     // [보안 스크립트 1] 단축키 차단 (F12, 소스보기, 저장 등)
     window.addEventListener('keydown', function(e) {
         // F12 차단
@@ -349,4 +342,10 @@
         alert("🔒 보안 정책에 의해 마우스 오른쪽 클릭이 금지되어 있습니다.");
         return false;
     });
+  <footer>
+    <div class="container footer-box">
+      <div>© ACBM AI</div>
+      </div>
+  </footer>
+</body>
 </html>
