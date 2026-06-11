@@ -220,7 +220,134 @@
       </div>
     </section>
 
-    <iframe
-      width="560"
-      height="315"
-      src="https
+  
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/6pty-EGP6hw"
+  title="YouTube video player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+<!--    
+<a href="https://youtu.be/6pty-EGP6hw" target="_blank" rel="noopener noreferrer" class="yt-button">
+  Watch on YouTube 2 - compensation before and after
+</a>
+
+<style>
+  .yt-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #ff0000;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+
+  .yt-button:hover {
+    background: #cc0000;
+  }
+</style>
+-->
+
+    <section id="applications">
+      <div class="container">
+        <h2 class="section-title">Applications</h2>
+        <p class="section-copy">Advanced display compensation is relevant anywhere panel uniformity, brightness stability, or calibration speed become product bottlenecks.</p>
+        <div class="grid-3">
+          <article class="feature">
+            <h3>OLED panels</h3>
+            <p>Compensation methods can support luminance consistency and panel quality management in high-performance OLED systems.</p>
+          </article>
+          <article class="feature">
+            <h3>MicroLED systems</h3>
+            <p>Fine-pitch MicroLED architectures benefit from scalable calibration approaches where memory and correction speed matter.</p>
+          </article>
+          <article class="feature">
+            <h3>AR and XR displays</h3>
+            <p>Compact near-eye displays demand precise brightness and color management under strict power and area constraints.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+<!--     
+<img src="./images/image1.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
+
+<img src="./images/image2.png" alt="ACBM technology" width="1200" height="750" loading="lazy">
+-->
+
+<section id="ip">
+  <div class="container two-col">
+    
+    <div class="panel">
+      <h2 class="section-title">IP focus</h2>
+      <p class="section-copy">This present patented and patent-pending work, commercialization themes, and partnership opportunities...</p>
+      <ul class="list">
+        <li>Adaptive compensation methodology.</li>
+        <li>Display calibration architecture.</li>
+        <li>Memory-efficient correction frameworks.</li>
+        <li>Potential licensing and technical collaboration pathways.</li>
+      </ul>
+    </div>
+
+    <div class="contact-card" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-copy">Contact freely for your business needs, please.</p>
+      <div><strong>Email</strong><br>acbm@acbmai.de</div>
+      <div><strong>Location</strong><br>Frankfurt, Germany</div>
+      <div><strong>Focus</strong><br>Display technology, compensation IP, and collaboration inquiries</div>
+      <a class="btn btn-primary" href="mailto:acbm@acbmai.de">Email ACBM AI</a>
+    </div>
+
+  </div> </section>
+
+  <a href="https://www.acbmai.de/dataroom/index-p.html" target="_blank">Move to DATA ROOM </a>
+  
+  </main>
+  <script>
+    // [보안 스크립트 1] 단축키 차단 (F12, 소스보기, 저장 등)
+    window.addEventListener('keydown', function(e) {
+        // F12 차단
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + Shift + I (개발자 도구 맥/윈도우) 차단
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + Shift + J (콘솔창) 차단
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + U (페이지 소스 보기) 차단
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + S (페이지 저장) 차단
+        if (e.ctrlKey && e.keyCode === 83) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // [보안 스크립트 2] 마우스 우클릭 시 경고문구 (원치 않으면 alert 지우고 return false만 남겨두세요)
+    window.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert("🔒 보안 정책에 의해 마우스 오른쪽 클릭이 금지되어 있습니다.");
+        return false;
+    });
+  <footer>
+    <div class="container footer-box">
+      <div>© ACBM AI</div>
+      </div>
+  </footer>
+</body>
+</html>
+ 
