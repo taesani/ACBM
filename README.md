@@ -1,5 +1,18 @@
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0ZKZN59YGS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // 기본 페이지 조회 및 실시간 방문자 수 수집 활성화
+    gtag('config', 'G-0ZKZN59YGS', {
+      'send_page_view': true
+    });
+  </script>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ACBM | Adaptive Compensation-Based Methodology</title> 
@@ -70,7 +83,7 @@
     .hero p { color: var(--muted); font-size: 18px; margin: 0 0 26px; max-width: 62ch; }
     .actions { display: flex; gap: 12px; flex-wrap: wrap; }
     .hero-card, .panel, .feature, .contact-card {
-      height: 100%;display: flex;flex-direction: column;
+      height: 100%; display: flex; flex-direction: column;
       margin: 0;
       background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
     }
@@ -85,26 +98,24 @@
     .feature { padding: 22px; }
     .feature h3 { margin: 0 0 10px; font-size: 20px; }
     .feature p { margin: 0; color: var(--muted); }
-/* 어긋남을 원천 차단하는 설정 */
-.two-col { 
-  display: grid; 
-  grid-template-columns: 1fr 1fr; /* 정확히 반반 나눔 */
-  gap: 24px; 
-  align-items: stretch; /* 높이 강제 일치 */
-}
 
-/* 카드들이 개별적으로 놀지 않도록 설정 */
-.panel, .contact-card {
-  height: 100%;
-  margin: 0 !important; /* 외부 마진 때문에 밀리는 것 방지 */
-  display: flex;
-  flex-direction: column;
-}
+    .two-col { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 24px; 
+      align-items: stretch; 
+    }
 
-/* 내부 내용물 때문에 박스가 커지는 것 방지 */
-.contact-card {
-  justify-content: space-between;
-}
+    .panel, .contact-card {
+      height: 100%;
+      margin: 0 !important; 
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-card {
+      justify-content: space-between;
+    }
 
     .media-wrap {
       overflow: hidden; border-radius: 16px; border: 1px solid var(--line); background: #e8e2d8;
@@ -116,6 +127,17 @@
       padding-top: 20px; border-top: 1px solid rgba(31,31,27,.1);
       display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
     }
+    
+    /* YouTube 아이프레임 중앙 정렬 및 여백 */
+    iframe {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      border: none;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
     @media (max-width: 900px) {
       .hero-grid, .grid-3, .two-col { grid-template-columns: 1fr; }
       .nav { align-items: flex-start; padding: 14px 0; }
@@ -141,11 +163,11 @@
         <a href="#ip">IP</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="btn btn-secondary" href="https://www.acbmai.de/dataroom/index.html">DATA ROOM</a>
+      <a class="btn btn-secondary" href="https://www.acbmai.de/dataroom/index.html" onclick="trackGA4Event('dataroom_click', 'top_nav_button')">DATA ROOM</a>
     </div>
   </header>
 
- <img src="./images/acbmsoftware1.jpg" alt="ACBM software1" width="1200" height="750" loading="lazy">
+  <img src="./images/acbmsoftware1.jpg" alt="ACBM software1" width="1200" height="750" loading="lazy">
 
   <main id="top">
     <section class="hero">
@@ -154,8 +176,8 @@
           <h1>Adaptive Compensation for Advanced Displays</h1>
           <p> Scalable display compensation designed for uniformity, luminance control, and manufacturable calibration. ACBM introduces a practical methodology for display compensation, with emphasis on real-time correction, reduced memory burden, and implementation paths relevant to OLED, MicroLED, and emerging XR display systems.</p>
           <div class="actions">
-            <a class="btn btn-primary" href="#technology">Explore technology</a>
-                        <a class="btn btn-secondary" href="#ip">View IP focus</a>
+            <a class="btn btn-primary" href="#technology" onclick="trackGA4Event('hero_action_click', 'explore_technology')">Explore technology</a>
+            <a class="btn btn-secondary" href="#ip" onclick="trackGA4Event('hero_action_click', 'view_ip_focus')">View IP focus</a>
           </div>
         </div>
         <aside class="hero-card" aria-label="Highlights">
@@ -166,38 +188,16 @@
       </div>
     </section>
 
-<img src="./images/acbmsoftware2.jpg" alt="ACBM software2" width="1200" height="750" loading="lazy">
+    <img src="./images/acbmsoftware2.jpg" alt="ACBM software2" width="1200" height="750" loading="lazy">
 
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/LOXqIPtEQxk"
-  title="YouTube video player"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
-
-<!--
-<a href="https://youtu.be/LOXqIPtEQxk" target="_blank" rel="noopener noreferrer" class="yt-button">
-  Watch on YouTube 1 - Real Test
-</a>
-
-<style>
-  .yt-button {
-    display: inline-block;
-    padding: 12px 24px;
-    background: #ff0000;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-  }
-
-  .yt-button:hover {
-    background: #cc0000;
-  }
-</style>
--->
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/LOXqIPtEQxk"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
 
     <section id="technology">
       <div class="container">
@@ -220,132 +220,7 @@
       </div>
     </section>
 
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/6pty-EGP6hw"
-  title="YouTube video player"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
-
-<!--    
-<a href="https://youtu.be/6pty-EGP6hw" target="_blank" rel="noopener noreferrer" class="yt-button">
-  Watch on YouTube 2 - compensation before and after
-</a>
-
-<style>
-  .yt-button {
-    display: inline-block;
-    padding: 12px 24px;
-    background: #ff0000;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-  }
-
-  .yt-button:hover {
-    background: #cc0000;
-  }
-</style>
--->
-
-    <section id="applications">
-      <div class="container">
-        <h2 class="section-title">Applications</h2>
-        <p class="section-copy">Advanced display compensation is relevant anywhere panel uniformity, brightness stability, or calibration speed become product bottlenecks.</p>
-        <div class="grid-3">
-          <article class="feature">
-            <h3>OLED panels</h3>
-            <p>Compensation methods can support luminance consistency and panel quality management in high-performance OLED systems.</p>
-          </article>
-          <article class="feature">
-            <h3>MicroLED systems</h3>
-            <p>Fine-pitch MicroLED architectures benefit from scalable calibration approaches where memory and correction speed matter.</p>
-          </article>
-          <article class="feature">
-            <h3>AR and XR displays</h3>
-            <p>Compact near-eye displays demand precise brightness and color management under strict power and area constraints.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-<!--     
-<img src="./images/image1.jpg" alt="ACBM technology" width="1200" height="750" loading="lazy">
-
-<img src="./images/image2.png" alt="ACBM technology" width="1200" height="750" loading="lazy">
--->
-
-<section id="ip">
-  <div class="container two-col">
-    
-    <div class="panel">
-      <h2 class="section-title">IP focus</h2>
-      <p class="section-copy">This present patented and patent-pending work, commercialization themes, and partnership opportunities...</p>
-      <ul class="list">
-        <li>Adaptive compensation methodology.</li>
-        <li>Display calibration architecture.</li>
-        <li>Memory-efficient correction frameworks.</li>
-        <li>Potential licensing and technical collaboration pathways.</li>
-      </ul>
-    </div>
-
-    <div class="contact-card" id="contact">
-      <h2 class="section-title">Contact</h2>
-      <p class="section-copy">Contact freely for your business needs, please.</p>
-      <div><strong>Email</strong><br>acbm@acbmai.de</div>
-      <div><strong>Location</strong><br>Frankfurt, Germany</div>
-      <div><strong>Focus</strong><br>Display technology, compensation IP, and collaboration inquiries</div>
-      <a class="btn btn-primary" href="mailto:acbm@acbmai.de">Email ACBM AI</a>
-    </div>
-
-  </div> </section>
-
-  <a href="https://www.acbmai.de/dataroom/index-p.html" target="_blank">Move to DATA ROOM </a>
-  
-  </main>
-  <script>
-    // [보안 스크립트 1] 단축키 차단 (F12, 소스보기, 저장 등)
-    window.addEventListener('keydown', function(e) {
-        // F12 차단
-        if (e.keyCode === 123) {
-            e.preventDefault();
-            return false;
-        }
-        // Ctrl + Shift + I (개발자 도구 맥/윈도우) 차단
-        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-            e.preventDefault();
-            return false;
-        }
-        // Ctrl + Shift + J (콘솔창) 차단
-        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
-            e.preventDefault();
-            return false;
-        }
-        // Ctrl + U (페이지 소스 보기) 차단
-        if (e.ctrlKey && e.keyCode === 85) {
-            e.preventDefault();
-            return false;
-        }
-        // Ctrl + S (페이지 저장) 차단
-        if (e.ctrlKey && e.keyCode === 83) {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    // [보안 스크립트 2] 마우스 우클릭 시 경고문구 (원치 않으면 alert 지우고 return false만 남겨두세요)
-    window.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        alert("🔒 보안 정책에 의해 마우스 오른쪽 클릭이 금지되어 있습니다.");
-        return false;
-    });
-  <footer>
-    <div class="container footer-box">
-      <div>© ACBM AI</div>
-      </div>
-  </footer>
-</body>
-</html>
+    <iframe
+      width="560"
+      height="315"
+      src="https
