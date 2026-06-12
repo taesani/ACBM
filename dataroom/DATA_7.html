@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACBM Data Room</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // 여기에 본인의 EmailJS Public Key를 입력하세요. (아래 세팅 가이드 참고)
+            emailjs.init("C6cgvR3i3DpM_KKBp");
+        })();
+    </script>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #2563eb;
+            --view-color: #059669;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --border-color: #cbd5e1;
+            --subfolder-bg: #f1f5f9;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 2.4rem;
+            margin: 0 0 8px 0;
+            font-weight: 800;
+        }
+
+        header p {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .security-notice {
+            background-color: #fff7ed;
+            border-left: 4px solid #ea580c;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            color: #9a3412;
+        }
+
+        .dataroom-tree {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .main-folder { margin-bottom: 25px; }
+        .main-folder:last-child { margin-bottom: 0; }
+
+        .folder-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            padding: 8px 12px;
+            background-color: #f1f5f9;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tree-content {
+            list-style: none;
+            padding-left: 24px;
+            margin: 8px 0 0 0;
+            border-left: 1.5px dashed var(--border-color);
+        }
+
+        .sub-folder {
+            margin: 10px 0;
+            background: #fafafa;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 10px;
+        }
+        .sub-folder-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 10px;
+            border-radius: 4px;
+            gap: 15px;
+        }
+        .file-item:hover { background-color: #f8fafc; }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.9rem;
+            color: #475569;
+            word-break: break-all;
+        }
+
+        .action-btns { display: flex; gap: 6px; white-space: nowrap; }
+        .empty-text { font-size: 0.85rem; color: #94a3b8; font-style: italic; padding-left: 24px; }
+
+        .btn {
+            background-color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-transform: lowercase;
+        }
+
+        .view-btn { color: var(--view-color); border: 1px solid #a7f3d0; }
+        .view-btn:hover { background-color: var(--view-color); color: #ffffff; border-color: var(--view-color); }
+
+        .dl-btn { color: var(--accent-color); border: 1px solid #bfdbfe; }
+        .dl-btn:hover { background-color: var(--accent-color); color: #ffffff; border-color: var(--accent-color); }
+
+        .restricted-badge {
+            background-color: #fee2e2; color: #991b1b; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; font-weight: 600;
+        }
+
+        /* 모달 스타일 */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(2px); z-index: 1000;
+            justify-content: center; align-items: center;
+        }
+        .modal-box { background: #ffffff; padding: 25px; border-radius: 10px; width: 100%; max-width: 450px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .modal-box h3 { margin-top: 0; color: var(--primary-color); }
+        .modal-box p { font-size: 0.9rem; color: #475569; margin-bottom: 12px; }
+        .modal-box input, .modal-box textarea {
+            width: 100%; padding: 8px; margin-bottom: 12px;
+            border: 1px solid var(--border-color); border-radius: 4px; box-sizing: border-box;
+        }
+        .modal-flex-btns { display: flex; justify-content: flex-end; gap: 8px; margin-top: 5px; }
+
+        footer { text-align: center; margin-top: 40px; color: #94a3b8; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>JUMI Intellectual Property Data Room</h1>
+        <p>M&A/투자 유치 자문 및 실사 파트너 공유 공간</p>
+        <p>Shared space for M&A/investment attraction advisory and due diligence partners</p>
+    </header>
+
+    <div class="security-notice">
+        🔒 <strong>보안 고지:</strong> 본 데이터룸은 상시 오픈 열람 공간(View Only)입니다. 원본 파일 다운로드는 정보 유출 방지를 위해 <strong>[사전 다운로드 승인 요청]</strong>을 거쳐 승인 처리된 사용자 및 파트너만 가능합니다.
+    </div>
+    
+    <div class="dataroom-tree">
+
+        <div class="main-folder">
+            <div class="folder-title">📁 1. Patent Portfolio</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📄 US_8711136_B2_GrantedPatent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('US_8711136_B2_GrantedPatent.pdf', 'DATA_01')">view</button><button class="btn dl-btn" onclick="openApprovalModal('US_8711136_B2_GrantedPatent.pdf', 'DATA_01')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 US_10419646_B2_GrantedPatent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('US_10419646_B2_GrantedPatent.pdf', 'DATA_02')">view</button><button class="btn dl-btn" onclick="openApprovalModal('US_10419646_B2_GrantedPatent.pdf', 'DATA_02')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 KR_101272367_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101272367_B1.pdf', 'DATA_03')">view</button><button class="btn dl-btn" onclick="openApprovalModal('KR_101272367_B1.pdf', 'DATA_03')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 KR_101641901_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101641901_B1.pdf', 'DATA_04')">view</button><button class="btn dl-btn" onclick="openApprovalModal('KR_101641901_B1.pdf', 'DATA_04')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 KR_101510690_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101510690_B1.pdf', 'DATA_05')">view</button><button class="btn dl-btn" onclick="openApprovalModal('KR_101510690_B1.pdf', 'DATA_05')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 JP_5606467_B2.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('JP_5606467_B2.pdf', 'DATA_06')">view</button><button class="btn dl-btn" onclick="openApprovalModal('JP_5606467_B2.pdf', 'DATA_06')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 TW_I446324_B.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('TW_I446324_B.pdf', 'DATA_07')">view</button><button class="btn dl-btn" onclick="openApprovalModal('TW_I446324_B.pdf', 'DATA_07')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 MaintenanceFees_AllCurrent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('MaintenanceFees_AllCurrent.pdf', 'DATA_08')">view</button><button class="btn dl-btn" onclick="openApprovalModal('MaintenanceFees_AllCurrent.pdf', 'DATA_08')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="main-folder">
+            <div class="folder-title">📁 2. Claim Charts(Independent evidence)</div>
+            <div class="tree-content">
+                <div class="sub-folder">
+                    <div class="sub-folder-title">📁 Samsung_Electronics</div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_KRMapping_202512_Samsung_Electronics_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KRMapping_202512_Samsung_Electronics_v1.0.pdf', 'DATA_09')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_KRMapping_202512_Samsung_Electronics_v1.0.pdf', 'DATA_09')">download</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_KRMapping_202601_Samsung_Electronics_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KRMapping_202601_Samsung_Electronics_v1.0.pdf', 'DATA_10')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_KRMapping_202601_Samsung_Electronics_v1.0.pdf', 'DATA_10')">download</button></div></div>
+                </div>
+                <div class="sub-folder">
+                    <div class="sub-folder-title">📁 Samsung_Display</div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_KRMapping_202512_Samsung_Display_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KRMapping_202512_Samsung_Display_v1.0.pdf', 'DATA_11')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_KRMapping_202512_Samsung_Display_v1.0.pdf', 'DATA_11')">download</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_KRMapping_202601_Samsung_Display_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KRMapping_202601_Samsung_Display_v1.0.pdf', 'DATA_12')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_KRMapping_202601_Samsung_Display_v1.0.pdf', 'DATA_12')">download</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_EXHIBITA&B_Samsung_Display_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_EXHIBITA&B_Samsung_Display_v1.0.pdf', 'DATA_13')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_EXHIBITA&B_Samsung_Display_v1.0.pdf', 'DATA_13')">download</button></div></li>
+                </div>
+                <div class="sub-folder">
+                    <div class="sub-folder-title">📁 Samsung_LSI</div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_KRMapping_202512_LSI_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KRMapping_202512_LSI_v1.0.pdf', 'DATA_14')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_KRMapping_202512_LSI_v1.0.pdf', 'DATA_14')">download</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 ClaimChart_KRMapping_202601_LSI_v1.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KRMapping_202601_LSI_v1.0.pdf', 'DATA_15')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_KRMapping_202601_LSI_v1.0.pdf', 'DATA_15')">download</button></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-folder">
+            <div class="folder-title">📁 3. Technical Evidence</div>
+            <div class="tree-content">
+                <div class="sub-folder">
+                    <div class="sub-folder-title">📁 Decap_Reports</div>
+                    <div class="file-item"><div class="file-info">📄 LSI_OLED_Driver_Decap_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('SDI_OLED_Driver_Decap_Report.pdf', 'DATA_16')">view</button><button class="btn dl-btn" onclick="openApprovalModal('SDI_OLED_Driver_Decap_Report.pdf', 'DATA_16')">download</button></div></div>
+                    <div class="file-item"><div class="file-info">📄 LXS_OLED_Driver_Decap_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_OLED_Driver_Decap_Report.pdf', 'DATA_17')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LXS_OLED_Driver_Decap_Report.pdf', 'DATA_17')">download</button></div></div>
+                </div>
+                <div class="sub-folder">
+                    <div class="sub-folder-title">📁 Simulation_Data</div>
+                    <div class="file-item"><div class="file-info">🎬 ACBM_LiveSimulation_Comparison.mp4</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ACBM_LiveSimulation_Comparison.mp4', 'DATA_18')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ACBM_LiveSimulation_Comparison.mp4', 'DATA_18')">download</button></div></div>
+                </div>
+                <div class="sub-folder">
+                    <div class="sub-folder-title">📁 Reverse_Engineering</div>
+                    <div class="file-item"><div class="file-info">📄 FCC_Filing_Analysis_Samsung.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('FCC_Filing_Analysis_Samsung.pdf', 'DATA_19')">view</button><button class="btn dl-btn" onclick="openApprovalModal('FCC_Filing_Analysis_Samsung.pdf', 'DATA_19')">download</button></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-folder">
+            <div class="folder-title">📁 4. Damages & Financials</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📊 GeorgiaPacific_Analysis_v2.xlsx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('GeorgiaPacific_Analysis_v2.xlsx', 'DATA_20')">view</button><button class="btn dl-btn" onclick="openApprovalModal('GeorgiaPacific_Analysis_v2.xlsx', 'DATA_20')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📊 RoyaltyBase_Calculation_AllDefendants.xlsx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('RoyaltyBase_Calculation_AllDefendants.xlsx', 'DATA_21')">view</button><button class="btn dl-btn" onclick="openApprovalModal('RoyaltyBase_Calculation_AllDefendants.xlsx', 'DATA_21')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 DamagesSummary_Conservative_Aggressive.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('DamagesSummary_Conservative_Aggressive.pdf', 'DATA_22')">view</button><button class="btn dl-btn" onclick="openApprovalModal('DamagesSummary_Conservative_Aggressive.pdf', 'DATA_22')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="main-folder">
+            <div class="folder-title">📁 5. Prior Art & Validity</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📄 PriorArtSearch_US8711136_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('PriorArtSearch_US8711136_Report.pdf', 'DATA_23')">view</button><button class="btn dl-btn" onclick="openApprovalModal('PriorArtSearch_US8711136_Report.pdf', 'DATA_23')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 PriorArtSearch_US10419646_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('PriorArtSearch_US10419646_Report.pdf', 'DATA_24')">view</button><button class="btn dl-btn" onclick="openApprovalModal('PriorArtSearch_US10419646_Report.pdf', 'DATA_24')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 ValidityOpinion_Summary.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ValidityOpinion_Summary.pdf', 'DATA_25')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ValidityOpinion_Summary.pdf', 'DATA_25')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="main-folder">
+            <div class="folder-title">📁 6. Corporate Documents</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📄 JUMI_HoldingLLC_Certificate_of_Formation.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('JUMI_HoldingLLC_Certificate_of_Formation.pdf', 'DATA_26')">view</button><button class="btn dl-btn" onclick="openApprovalModal('JUMI_HoldingLLC_Certificate_of_Formation.pdf', 'DATA_26')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 IP_Assignment_US8711136_to_JUMI.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('IP_Assignment_US8711136_to_JUMI.pdf', 'DATA_27')">view</button><button class="btn dl-btn" onclick="openApprovalModal('IP_Assignment_US8711136_to_JUMI.pdf', 'DATA_27')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 IP_Assignment_US10419646_to_JUMI.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('IP_Assignment_US10419646_to_JUMI.pdf', 'DATA_28')">view</button><button class="btn dl-btn" onclick="openApprovalModal('IP_Assignment_US10419646_to_JUMI.pdf', 'DATA_28')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 ChainOfTitle_Complete.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ChainOfTitle_Complete.pdf', 'DATA_29')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ChainOfTitle_Complete.pdf', 'DATA_29')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="main-folder">
+            <div class="folder-title">📁 7. Infringement Notices (Independent evidence)</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📄 SS_SDC_Notice_2026_03.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGE_SDI_Notice_2026_03.pdf', 'DATA_30')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LGE_LGD_Notice_2026_03.pdf', 'DATA_30')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0621.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_Notice_2024_0621.pdf', 'DATA_31')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LXS_Notice_2024_0621.pdf', 'DATA_31')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0718.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_Notice_2024_0718.pdf', 'DATA_32')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LXS_Notice_2024_0718.pdf', 'DATA_32')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Synaptics_Notice_2023_Q1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Synaptics_Notice_2023_Q1.pdf', 'DATA_33')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Synaptics_Notice_2023_Q1.pdf', 'DATA_33')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 SS_SDC_FinalNotice_2026_0525.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGE_LGD_FinalNotice_2026_0525.pdf', 'DATA_34')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LGE_LGD_FinalNotice_2026_0525.pdf', 'DATA_34')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 LDC_FinalNotice_2026_0609.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGD_FinalNotice_2026_0609.pdf', 'DATA_35')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LGD_FinalNotice_2026_0609.pdf', 'DATA_35')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="main-folder">
+            <div class="folder-title">📁 8. Litigation Budget</div>
+            <ul class="tree-content">
+                <li class="file-item"><div class="file-info">📊 LitigationBudget_v2.xlsx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LitigationBudget_v2.xlsx', 'DATA_36')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LitigationBudget_v2.xlsx', 'DATA_36')">download</button></div></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 ACBM Data Room. All Rights Reserved.</p>
+    </footer>
+</div>
+
+<div id="approvalModal" class="modal-overlay">
+    <div class="modal-box">
+        <h3>📥 다운로드 승인 요청</h3>
+        <p>선택 파일: <strong id="modalFileName" style="color:#2563eb;">-</strong></p>
+        <p>본 파일은 보안 자산입니다. 아래 양식을 작성하시면 관리자 메일로 승인 요청이 자동 전달됩니다.</p>
+        
+        <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:4px;">요청자 성함 / 소속</label>
+        <input type="text" id="reqName" placeholder="예: 홍길동 (ABC 자산운용)">
+        
+        <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:4px;">회신받을 이메일 주소</label>
+        <input type="email" id="reqEmail" placeholder="예: partner@company.com">
+        
+        <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:4px;">다운로드 사유</label>
+        <textarea id="reqReason" rows="3" placeholder="예: 내부 M&A 타당성 실사 검토 목적" style="width:100%; border:1px solid var(--border-color); border-radius:4px; padding:8px; box-sizing:border-box; margin-bottom:15px; font-family:inherit; resize:none;"></textarea>
+        
+        <div class="modal-flex-btns">
+            <button class="btn" onclick="closeApprovalModal()" style="border:1px solid #cbd5e1; color:#64748b;">취소</button>
+            <button class="btn" id="submitBtn" onclick="submitApproval()" style="background:var(--accent-color); color:#fff; border:none; padding:4px 16px;">승인 요청 보내기</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 가상의 구글 드라이브 ID 맵 (View 전용)
+    const fileIdMap = {
+        'DATA_01': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu01', 'DATA_02': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu02',
+        'DATA_03': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu03', 'DATA_04': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu04',
+        'DATA_05': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu05', 'DATA_06': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu06',
+        'DATA_07': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu07', 'DATA_08': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu08',
+        'DATA_09': '1TQzx5rtt5x-8k0PplHS6G6xgnwIEBRzo', 'DATA_10': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu10',
+        'DATA_11': '179kkDynsfq76DzxxcHvVs6H3uRYzIulf', 'DATA_12': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu12',
+        'DATA_13': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu13', 'DATA_14': '1LKB90cR4cK1W4O7uVfvezedP3JnvIEZl',
+        'DATA_15': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu15', 'DATA_16': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu16',
+        'DATA_17': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu17', 'DATA_18': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu18',
+        'DATA_19': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu19', 'DATA_20': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu20',
+        'DATA_21': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu21', 'DATA_22': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu22',
+        'DATA_23': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu23', 'DATA_24': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu24',
+        'DATA_25': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu25', 'DATA_26': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu26',
+        'DATA_27': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu27', 'DATA_28': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu28',
+        'DATA_29': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu29', 'DATA_30': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu30',
+        'DATA_31': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu31', 'DATA_32': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu32',
+        'DATA_33': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu33', 'DATA_34': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu34',
+        'DATA_35': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu35', 'DATA_36': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu36'
+    };
+
+    let currentSelectFile = { name: '', code: '' };
+
+    // 1. 구글 드라이브 열람(View) 핸들러 - 자유롭게 새창 열람 가능
+    function viewFile(fileName, dataCode) {
+        alert("개방형 보안 정책에 따라 '" + fileName + "' 파일을 열람합니다.\n(열람 기록이 로그에 보관됩니다.)");
+        let fileId = fileIdMap[dataCode] || "1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu0u";
+        let fileUrl = "https://drive.google.com/file/d/" + fileId + "/view?rm=minimal&ts=6a252146";
+        window.open(fileUrl, '_blank');
+    }
+
+    // 2. 다운로드 버튼 클릭 시 승인 팝업창 오픈
+    function openApprovalModal(fileName, dataCode) {
+        currentSelectFile.name = fileName;
+        currentSelectFile.code = dataCode;
+        document.getElementById('modalFileName').innerText = fileName;
+        document.getElementById('approvalModal').style.display = 'flex';
+    }
+
+    function closeApprovalModal() {
+        document.getElementById('approvalModal').style.display = 'none';
+        document.getElementById('reqName').value = '';
+        document.getElementById('reqEmail').value = '';
+        document.getElementById('reqReason').value = '';
+        document.getElementById('submitBtn').innerText = "승인 요청 보내기";
+        document.getElementById('submitBtn').disabled = false;
+    }
+
+    // 3. 승인 요청 실시간 메일 전송 프로세스
+    function submitApproval() {
+        let name = document.getElementById('reqName').value.trim();
+        let email = document.getElementById('reqEmail').value.trim();
+        let reason = document.getElementById('reqReason').value.trim();
+        
+        if(!name || !email || !reason) {
+            alert("모든 필드(이름, 이메일, 사유)를 입력해 주세요.");
+            return;
+        }
+
+        document.getElementById('submitBtn').innerText = "전송 중...";
+        document.getElementById('submitBtn').disabled = true;
+
+        // EmailJS에 전송할 파라미터 구성 정보
+        let templateParams = {
+            admin_email: "acbm026@gmail.com",
+            file_name: currentSelectFile.name,
+            file_code: currentSelectFile.code,
+            user_name: name,
+            user_email: email,
+            request_reason: reason
+        };
+
+        // EmailJS 전송 실행 로직
+        // 'YOUR_SERVICE_ID'와 'YOUR_TEMPLATE_ID'는 아래 연동 세팅 방법을 확인해 주세요.
+        emailjs.send('service_e7y2vie', 'template_eert82e', templateParams)
+            .then(function(response) {
+                alert("📩 승인 요청 메일이 전송되었습니다.\n\n관리자 검토 후 입력하신 주소(" + email + ")로 승인 결과가 안내됩니다.");
+                closeApprovalModal();
+            }, function(error) {
+                console.log('Failed...', error);
+                // 연동 전 가상 알림 테스트용 예외 처리
+                alert("📩 [알림] 승인 요청이 접수되었습니다!\n\n요청 파일: " + currentSelectFile.name + "\n관리자 수신함: acbm026@gmail.com\n\n(※ 실제 메일 연동을 완료하려면 소스코드 상단의 EmailJS 키값을 입력해야 합니다.)");
+                closeApprovalModal();
+            });
+    }
+</script>
+
+<script>
+    // [보안 스크립트] 우클릭 차단 및 핵심 단축키(소스보기, 인쇄 등) 방지
+    window.addEventListener('keydown', function(e) {
+        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 80))) {
+            e.preventDefault();
+            return false;
+        }
+    });
+    window.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert("🔒 보안 정책에 의해 마우스 오른쪽 클릭이 제한됩니다.");
+        return false;
+    });
+</script>
+</body>
+</html>
