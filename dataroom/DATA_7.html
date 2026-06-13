@@ -351,7 +351,7 @@
 
     // 1. 구글 드라이브 열람(View) 핸들러 - 자유롭게 새창 열람 가능
     function viewFile(fileName, dataCode) {
-        //alert("개방형 보안 정책에 따라 '" + fileName + "' 파일을 열람합니다.\n(열람 기록이 로그에 보관됩니다.)");
+        alert("개방형 보안 정책에 따라 '" + fileName + "' 파일을 열람합니다.\n(열람 기록이 로그에 보관됩니다.)");
         let fileId = fileIdMap[dataCode] || "1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu0u";
         let fileUrl = "https://drive.google.com/file/d/" + fileId + "/view?rm=minimal&ts=6a252146";
         window.open(fileUrl, '_blank');
