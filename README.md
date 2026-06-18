@@ -296,7 +296,9 @@
       <h2 class="section-title">Contact</h2>
       <p class="section-copy">Contact freely for your business needs, please.</p>
       <div><strong>Email</strong><br>acbm@acbmai.de</div>
-      <div><strong>Location</strong><br>Frankfurt, Germany</div>
+      <div><strong>Location 1</strong><br>Frankfurt, Germany </div>
+      <div><strong>Location 2</strong><br> JM System, Republic of Korea</div>
+      <div><strong>Location 3</strong><br> JUMI HOLDING LLC, USA</div>
       <div><strong>Focus</strong><br>Display technology, compensation IP, and collaboration inquiries</div>
       <a class="btn btn-primary" href="mailto:acbm@acbmai.de">Email ACBM AI</a>
     </div>
