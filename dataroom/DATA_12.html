@@ -274,11 +274,11 @@
         <div class="main-folder">
             <div class="folder-title">📁 7. Infringement Notices (Independent evidence)</div>
             <ul class="tree-content">
-                <li class="file-item"><div class="file-info">📄 LG__Notice_2026_03.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGE_SDI_Notice_2026_03.pdf', 'DATA_30')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LGE_LGD_Notice_2026_03.pdf', 'DATA_30')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 LG_SDC_Notice_2026_03.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGE_SDI_Notice_2026_03.pdf', 'DATA_30')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LGE_LGD_Notice_2026_03.pdf', 'DATA_30')">download</button></div></li>
                 <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0621.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_Notice_2024_0621.pdf', 'DATA_31')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LXS_Notice_2024_0621.pdf', 'DATA_31')">download</button></div></li>
                 <li class="file-item"><div class="file-info">📄 LXS_Notice_2024_0718.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LXS_Notice_2024_0718.pdf', 'DATA_32')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LXS_Notice_2024_0718.pdf', 'DATA_32')">download</button></div></li>
                 <li class="file-item"><div class="file-info">📄 Synaptics_Notice_2023_Q1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Synaptics_Notice_2023_Q1.pdf', 'DATA_33')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Synaptics_Notice_2023_Q1.pdf', 'DATA_33')">download</button></div></li>
-                <li class="file-item"><div class="file-info">📄 LG__FinalNotice_2026_0525.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGE_LGD_FinalNotice_2026_0525.pdf', 'DATA_34')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LGE_LGD_FinalNotice_2026_0525.pdf', 'DATA_34')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 LG_SDC_FinalNotice_2026_0525.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGE_LGD_FinalNotice_2026_0525.pdf', 'DATA_34')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LGE_LGD_FinalNotice_2026_0525.pdf', 'DATA_34')">download</button></div></li>
                 <li class="file-item"><div class="file-info">📄 LDC_FinalNotice_2026_0609.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('LGD_FinalNotice_2026_0609.pdf', 'DATA_35')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LGD_FinalNotice_2026_0609.pdf', 'DATA_35')">download</button></div></li>
             </ul>
         </div>
@@ -320,15 +320,15 @@
 </div>
 
 <script>
-    // 가상의 구글 드라이브 ID 맵 (View 전용)
+    // 구글 드라이브 ID 맵 (오류 부분 수정 완료)
     const fileIdMap = {
         'DATA_01': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu01', 'DATA_02': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu02',
         'DATA_03': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu03', 'DATA_04': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu04',
         'DATA_05': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu05', 'DATA_06': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu06',
         'DATA_07': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu07', 'DATA_08': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu08',
-        'DATA_09': '1TQzx5rtt5x-                        'DATA_10': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu10',
+        'DATA_09': '1TQzx5rtt5x-000000000000000000009', 'DATA_10': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu10',
         'DATA_11': '11KNqngl9N5kL8ZyBQVHDJbthHprZDAv7', 'DATA_12': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu12',
-        'DATA_13': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu13', 'DATA_14': '1LKB90cR4cK1W4O7u-               ',
+        'DATA_13': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu13', 'DATA_14': '1LKB90cR4cK1W4O7u-000000000000014',
         'DATA_15': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu15', 'DATA_16': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu16',
         'DATA_17': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu17', 'DATA_18': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu18',
         'DATA_19': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu19', 'DATA_20': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu20',
@@ -344,39 +344,31 @@
 
     let currentSelectFile = { name: '', code: '' };
 
-    // 1. 구글 드라이브 열람(View) 핸들러 (보안 알림 및 권한 검증)
     function viewFile(fileName, dataCode) {
-        // [보안 고지] 실시간 로그 기록 및 모니터링 안내 경고창 (confirm)
         var isConfirmed = confirm(
             "⚠️ [보안 정책 안내]\n\n" +
             "본 파일(" + fileName + ")의 열람 이력 및 접속 IP는 실시간 보안 감사 로그(Audit Log)에 안전하게 기록됩니다.\n\n" +
             "보안 지침에 동의하고 열람을 진행하시겠습니까?"
         );
 
-        // 사용자가 취소(아니오)를 누른 경우 즉시 접근 차단
         if (!isConfirmed) {
             alert("❌ 보안 정책 동의 거부로 인해 파일 열람이 취소되었습니다.");
             return;
         }
 
-        // [권한 체크] 데이터룸 등급별 접근 권한 입력 요구 (Level 1~3)
         var userLevel = prompt("🔒 본 데이터룸 자산은 등급별로 통제됩니다.\n할당받으신 접근 권한 등급을 입력해 주세요. (예: 1, 2, 3)");
 
-        // 정상적인 권한 등급(1, 2, 3)을 입력했는지 검증
         if (userLevel === "1" || userLevel === "2" || userLevel === "3") {
             alert("✅ 접근 권한(Level " + userLevel + ")이 확인되었습니다. 즉시 파일 열람 페이지로 이동합니다.");
             
-            // 기존 구글 드라이브 링크 새 창 열기 로직
             var fileId = fileIdMap[dataCode] || "1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu0u";
             var fileUrl = "https://drive.google.com/file/d/" + fileId + "/view?rm=minimal&ts=6a252146";
             window.open(fileUrl, '_blank');
         } else {
-            // 권한 등급을 잘못 입력했거나, 입력을 취소/공백으로 둔 경우 차단
             alert("❌ 접근 권한이 없습니다. 올바른 권한이 없는 경우 조회가 불가능합니다.");
         }
     }
 
-    // 2. 다운로드 버튼 클릭 시 승인 팝업창 오픈
     function openApprovalModal(fileName, dataCode) {
         currentSelectFile.name = fileName;
         currentSelectFile.code = dataCode;
@@ -393,7 +385,6 @@
         document.getElementById('submitBtn').disabled = false;
     }
 
-    // 3. 승인 요청 실시간 메일 전송 프로세스
     function submitApproval() {
         let name = document.getElementById('reqName').value.trim();
         let email = document.getElementById('reqEmail').value.trim();
@@ -407,7 +398,6 @@
         document.getElementById('submitBtn').innerText = "전송 중...";
         document.getElementById('submitBtn').disabled = true;
 
-        // EmailJS에 전송할 파라미터 구성 정보
         let templateParams = {
             admin_email: "acbm026@gmail.com",
             file_name: currentSelectFile.name,
@@ -417,15 +407,12 @@
             request_reason: reason
         };
 
-        // EmailJS 전송 실행 로직
-        // 'YOUR_SERVICE_ID'와 'YOUR_TEMPLATE_ID'는 아래 연동 세팅 방법을 확인해 주세요.
         emailjs.send('service_e7y2vie', 'template_eert82e', templateParams)
             .then(function(response) {
                 alert("📩 승인 요청 메일이 전송되었습니다.\n\n관리자 검토 후 입력하신 주소(" + email + ")로 승인 결과가 안내됩니다.");
                 closeApprovalModal();
             }, function(error) {
                 console.log('Failed...', error);
-                // 연동 전 가상 알림 테스트용 예외 처리
                 alert("📩 [알림] 승인 요청이 접수되었습니다!\n\n요청 파일: " + currentSelectFile.name + "\n관리자 수신함: acbm026@gmail.com\n\n(※ 실제 메일 연동을 완료하려면 소스코드 상단의 EmailJS 키값을 입력해야 합니다.)");
                 closeApprovalModal();
             });
@@ -433,7 +420,6 @@
 </script>
 
 <script>
-    // [보안 스크립트] 우클릭 차단 및 핵심 단축키(소스보기, 인쇄 등) 방지
     window.addEventListener('keydown', function(e) {
         if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 80))) {
             e.preventDefault();
