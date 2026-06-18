@@ -320,7 +320,7 @@
 </div>
 
 <script>
-    // 구글 드라이브 ID 맵 (오류 부분 수정 완료)
+    // 구글 드라이브 ID 맵 (공백 제거 및 보완 완료)
     const fileIdMap = {
         'DATA_01': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu01', 'DATA_02': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu02',
         'DATA_03': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu03', 'DATA_04': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu04',
@@ -344,31 +344,28 @@
 
     let currentSelectFile = { name: '', code: '' };
 
+    // 1. 구글 드라이브 열람(View) 핸들러 (사용자 요청에 따라 등급 확인창 제거 완료)
     function viewFile(fileName, dataCode) {
+        // 보안 로그 동의 창만 유지
         var isConfirmed = confirm(
             "⚠️ [보안 정책 안내]\n\n" +
             "본 파일(" + fileName + ")의 열람 이력 및 접속 IP는 실시간 보안 감사 로그(Audit Log)에 안전하게 기록됩니다.\n\n" +
             "보안 지침에 동의하고 열람을 진행하시겠습니까?"
         );
 
+        // 동의 거부 시 차단
         if (!isConfirmed) {
             alert("❌ 보안 정책 동의 거부로 인해 파일 열람이 취소되었습니다.");
             return;
         }
 
-        var userLevel = prompt("🔒 본 데이터룸 자산은 등급별로 통제됩니다.\n할당받으신 접근 권한 등급을 입력해 주세요. (예: 1, 2, 3)");
-
-        if (userLevel === "1" || userLevel === "2" || userLevel === "3") {
-            alert("✅ 접근 권한(Level " + userLevel + ")이 확인되었습니다. 즉시 파일 열람 페이지로 이동합니다.");
-            
-            var fileId = fileIdMap[dataCode] || "1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu0u";
-            var fileUrl = "https://drive.google.com/file/d/" + fileId + "/view?rm=minimal&ts=6a252146";
-            window.open(fileUrl, '_blank');
-        } else {
-            alert("❌ 접근 권한이 없습니다. 올바른 권한이 없는 경우 조회가 불가능합니다.");
-        }
+        // 동의 시 등급 묻지 않고 즉시 파일 주소로 새 창 이동
+        var fileId = fileIdMap[dataCode] || "1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu0u";
+        var fileUrl = "https://drive.google.com/file/d/" + fileId + "/view?rm=minimal&ts=6a252146";
+        window.open(fileUrl, '_blank');
     }
 
+    // 2. 다운로드 버튼 클릭 시 승인 팝업창 오픈
     function openApprovalModal(fileName, dataCode) {
         currentSelectFile.name = fileName;
         currentSelectFile.code = dataCode;
@@ -385,6 +382,7 @@
         document.getElementById('submitBtn').disabled = false;
     }
 
+    // 3. 승인 요청 실시간 메일 전송 프로세스
     function submitApproval() {
         let name = document.getElementById('reqName').value.trim();
         let email = document.getElementById('reqEmail').value.trim();
