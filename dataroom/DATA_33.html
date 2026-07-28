@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUMI IP Investment & Global DD Data Room</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("C6cgvR3i3DpM_KKBp");
+        })();
+    </script>
+    <style>
+        :root {
+            --primary-color: #1e293b;
+            --accent-color: #3b82f6;
+            --view-color: #10b981;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --border-color: #e2e8f0;
+            --investor-gold: #b45309;
+            --nda-color: #dc2626;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 3px double var(--border-color);
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 2.6rem;
+            margin: 0 0 12px 0;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        header .subtitle {
+            color: #475569;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0 0 6px 0;
+        }
+
+        header .en-subtitle {
+            color: #64748b;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .investor-badge {
+            display: inline-block;
+            background-color: #fef3c7;
+            color: var(--investor-gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border: 1px solid #fde68a;
+        }
+
+        .security-notice {
+            background-color: #fff5f5;
+            border-left: 4px solid #ef4444;
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin-bottom: 35px;
+            font-size: 0.95rem;
+            color: #991b1b;
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin: 40px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 6px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .dashboard-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .card-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .badge-nda {
+            font-size: 0.75rem;
+            background-color: #fee2e2;
+            color: var(--nda-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 10px;
+            border-radius: 6px;
+            gap: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .file-item:last-child { border-bottom: none; }
+        .file-item:hover { background-color: #f8fafc; }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.85rem;
+            color: #334155;
+            word-break: break-all;
+        }
+
+        .action-btns { display: flex; gap: 4px; white-space: nowrap; }
+
+        .btn {
+            background-color: #ffffff;
+            padding: 3px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-transform: lowercase;
+        }
+
+        .view-btn { color: var(--view-color); border: 1px solid #a7f3d0; }
+        .view-btn:hover { background-color: var(--view-color); color: #ffffff; border-color: var(--view-color); }
+
+        .dl-btn { color: var(--accent-color); border: 1px solid #bfdbfe; }
+        .dl-btn:hover { background-color: var(--accent-color); color: #ffffff; border-color: var(--accent-color); }
+
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(2px); z-index: 1000;
+            justify-content: center; align-items: center;
+        }
+        .modal-box { background: #ffffff; padding: 25px; border-radius: 10px; width: 100%; max-width: 450px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .modal-box h3 { margin-top: 0; color: var(--primary-color); }
+        .modal-box p { font-size: 0.9rem; color: #475569; margin-bottom: 12px; }
+        .modal-box input, .modal-box textarea {
+            width: 100%; padding: 8px; margin-bottom: 12px;
+            border: 1px solid var(--border-color); border-radius: 4px; box-sizing: border-box;
+        }
+        .modal-flex-btns { display: flex; justify-content: flex-end; gap: 8px; margin-top: 5px; }
+
+        footer { text-align: center; margin-top: 60px; color: #94a3b8; font-size: 0.85rem; border-top: 1px solid var(--border-color); padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="investor-badge">INVESTOR & STRATEGIC DD PARTNER ONLY</div>
+        <h1>JUMI Intellectual Property Data Room</h1>
+        <p class="subtitle">글로벌 테크·반도체·디스플레이 파트너 기업 통합 실사 매트릭스</p>
+        <p class="en-subtitle">Global Technology Matrix & Audit Pipeline for M&A and LP Partners</p>
+    </header>
+
+    <div class="security-notice">
+        🔒 <strong>보안 고지 및 기밀 유지 (Strict Confidentiality Notice):</strong> 본 데이터룸은 전면적인 글로벌 기업 대상 투자 실사 조율을 위해 개설되었습니다. Samsung, LG, Apple, Meta를 비롯한 글로벌 기업용 NDA 체결 문서 및 전 세계 주요 디스플레이/반도체 제조사의 특허 매핑 리포트 외부 유출을 전면 금합니다.
+    </div>    
+
+    <!-- Patent Portfolio -->
+    <div class="section-title">📂 Patent Portfolio (핵심 특허 자산 파이프라인)</div>
+    <div class="grid-container">
+        <div class="dashboard-card" style="grid-column: 1 / -1;">
+            <div class="card-header">
+                <span>📁 Patent Portfolio</span>
+                <span class="badge-nda" style="background-color: #fef3c7; color: #b45309;">Core Assets</span>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 US_8711136_B2_GrantedPatent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('US_8711136_B2_GrantedPatent.pdf', 'DATA_01')">view</button><button class="btn dl-btn" onclick="openApprovalModal('US_8711136_B2_GrantedPatent.pdf', 'DATA_01')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 US_10419646_B2_GrantedPatent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('US_10419646_B2_GrantedPatent.pdf', 'DATA_02')">view</button><button class="btn dl-btn" onclick="openApprovalModal('US_10419646_B2_GrantedPatent.pdf', 'DATA_02')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 KR_101272367_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101272367_B1.pdf', 'DATA_03')">view</button><button class="btn dl-btn" onclick="openApprovalModal('KR_101272367_B1.pdf', 'DATA_03')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 KR_101641901_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101641901_B1.pdf', 'DATA_04')">view</button><button class="btn dl-btn" onclick="openApprovalModal('KR_101641901_B1.pdf', 'DATA_04')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 KR_101510690_B1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('KR_101510690_B1.pdf', 'DATA_05')">view</button><button class="btn dl-btn" onclick="openApprovalModal('KR_101510690_B1.pdf', 'DATA_05')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 JP_5606467_B2.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('JP_5606467_B2.pdf', 'DATA_06')">view</button><button class="btn dl-btn" onclick="openApprovalModal('JP_5606467_B2.pdf', 'DATA_06')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 TW_I446324_B.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('TW_I446324_B.pdf', 'DATA_07')">view</button><button class="btn dl-btn" onclick="openApprovalModal('TW_I446324_B.pdf', 'DATA_07')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 MaintenanceFees_AllCurrent.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('MaintenanceFees_AllCurrent.pdf', 'DATA_08')">view</button><button class="btn dl-btn" onclick="openApprovalModal('MaintenanceFees_AllCurrent.pdf', 'DATA_08')">download</button></div></li>
+            </ul>
+        </div>
+    </div>
+     
+    <div class="section-title">🌍 I. 글로벌 빅테크 및 최상위 타깃 자산 (Global Tier-1 Tech Targets & NDA Assets)</div>
+    <div class="grid-container">
+        <div class="dashboard-card">
+            <div class="card-header">
+                <span>📱 Samsung Electronics / LSI / SDC</span>
+                <span class="badge-nda">NDA Active</span>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 ClaimChart_202512_Samsung_Electronics_v2.0.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KRMapping_202512_Samsung_Electronics_v2.0.pdf', 'DATA_SEC_01')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_KRMapping_202512_Samsung_Electronics_v2.0.pdf', 'DATA_SEC_01')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 SDC_Patent_Claim_Mapping_Charts_202512.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('SDC_Patent_Claim_Mapping_Charts_202512.pdf', 'DATA_SDC_01')">view</button><button class="btn dl-btn" onclick="openApprovalModal('SDC_Patent_Claim_Mapping_Charts_202512.pdf', 'DATA_SDC_01')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 ClaimChart_Samsung_LSI_v2.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_Samsung_LSI_v2.pdf', 'DATA_12')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_Samsung_LSI_v2.pdf', 'DATA_12')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 1.0 Burford_Samsung_ClaimSummary_EN.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('1.0 Burford_Samsung_ClaimSummary_EN.docx', 'DATA_SEC_BURFORD_EN')">view</button><button class="btn dl-btn" onclick="openApprovalModal('1.0 Burford_Samsung_ClaimSummary_EN.docx', 'DATA_SEC_BURFORD_EN')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 1.1 Burford_Samsung_ClaimSummary_KR.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('1.1 Burford_Samsung_ClaimSummary_KR.docx', 'DATA_SEC_BURFORD_KR')">view</button><button class="btn dl-btn" onclick="openApprovalModal('1.1 Burford_Samsung_ClaimSummary_KR.docx', 'DATA_SEC_BURFORD_KR')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 1.2 RE_Report_Samsung_EN.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('1.2 RE_Report_Samsung_EN.docx', 'DATA_SEC_RE_EN')">view</button><button class="btn dl-btn" onclick="openApprovalModal('1.2 RE_Report_Samsung_EN.docx', 'DATA_SEC_RE_EN')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 1.3 RE_Report_Samsung_Burford_kr.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('1.3 RE_Report_Samsung_Burford_kr.docx', 'DATA_SEC_RE_KR')">view</button><button class="btn dl-btn" onclick="openApprovalModal('1.3 RE_Report_Samsung_Burford_kr.docx', 'DATA_SEC_RE_KR')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 2026.06.05_NDA btw Lim and Samsung_executed.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('2026.06.05_NDA btw Lim and Samsung_executed.pdf', 'DATA_SEC_NDA_EXEC')">view</button><button class="btn dl-btn" onclick="openApprovalModal('2026.06.05_NDA btw Lim and Samsung_executed.pdf', 'DATA_SEC_NDA_EXEC')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Mutual_NDA_SDC-JUMI_SDC revised_20260722_JM.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Mutual_NDA_SDC-JUMI_SDC revised_20260722_JM.docx', 'DATA_SDC_NDA_REV')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Mutual_NDA_SDC-JUMI_SDC revised_20260722_JM.docx', 'DATA_SDC_NDA_REV')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">
+                <span>📺 LG Group (LGE / LGD)</span>
+                <span class="badge-nda">NDA Active</span>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 ClaimChart_KRMapping_LG_Display.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KRMapping_LG_Display.pdf', 'DATA_11')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_KRMapping_LG_Display.pdf', 'DATA_11')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 ClaimChart_EXHIBITA&B_LG_Display.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_EXHIBITA&B_LG_Display_v1.0.pdf', 'DATA_13')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_EXHIBITA&B_LG_Display_v1.0.pdf', 'DATA_13')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 4.1 LG_RE_Report_Burford_v1.0_1.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('4.1 LG_RE_Report_Burford_v1.0_1.docx', 'DATA_LG_RE_01')">view</button><button class="btn dl-btn" onclick="openApprovalModal('4.1 LG_RE_Report_Burford_v1.0_1.docx', 'DATA_LG_RE_01')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 4.2 LG_RE_Report_Burford_v1.0_kr.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('4.2 LG_RE_Report_Burford_v1.0_kr.docx', 'DATA_LG_RE_KR')">view</button><button class="btn dl-btn" onclick="openApprovalModal('4.2 LG_RE_Report_Burford_v1.0_kr.docx', 'DATA_LG_RE_KR')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 4.3 LGD_RE_Report_Burford_v1.0.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('4.3 LGD_RE_Report_Burford_v1.0.docx', 'DATA_LGD_RE_01')">view</button><button class="btn dl-btn" onclick="openApprovalModal('4.3 LGD_RE_Report_Burford_v1.0.docx', 'DATA_LGD_RE_01')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">
+                <span>🍏 Apple</span>
+                <span class="badge-nda">NDA Active</span>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 ClaimChart_KRMapping_Apple_v2.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KRMapping_Apple_v2.pdf', 'DATA_10')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ClaimChart_KRMapping_Apple_v2.pdf', 'DATA_10')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 2.0 Burford_Apple_Summary.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('2.0 Burford_Apple_Summary.docx', 'DATA_APPLE_BURFORD')">view</button><button class="btn dl-btn" onclick="openApprovalModal('2.0 Burford_Apple_Summary.docx', 'DATA_APPLE_BURFORD')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 2.1 Tech_Analysis_2026_001.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('2.1 Tech_Analysis_2026_001.docx', 'DATA_APPLE_TECH_01')">view</button><button class="btn dl-btn" onclick="openApprovalModal('2.1 Tech_Analysis_2026_001.docx', 'DATA_APPLE_TECH_01')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <!-- Meta 독립 카드 -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <span>🍏 Meta</span>
+                <span class="badge-nda">NDA Active</span>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 Meta_XR_Display_Patent_Mapping.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Meta_XR_Display_Patent_Mapping.pdf', 'DATA_20')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Meta_XR_Display_Patent_Mapping.pdf', 'DATA_20')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <!-- Fund Legal Frameworks 독립 카드 -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <span>🌌 Fund Legal Frameworks</span>
+                <span class="badge-nda">NDA Active</span>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 Omni_Bridgeway_NDA_Template_NY_Client_20260505.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Omni_Bridgeway_NDA_Template_NY_Client_form_Lim_20260505.pdf', 'DATA_31')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Omni_Bridgeway_NDA_Template_NY_Client_form_Lim_20260505.pdf', 'DATA_31')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Burford_Capital_Litigation_Funding_Agreement.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Burford_Capital_Agreement.pdf', 'DATA_BURFORD')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Burford_Capital_Agreement.pdf', 'DATA_BURFORD')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">🇨🇳 II. 글로벌 디스플레이 및 대형 패널 메이커 (Global Display & Panel Giants)</div>
+    <div class="grid-container">
+        <div class="dashboard-card">
+            <div class="card-header">🖥️ BOE (京东方)</div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 BOE_OLED_AMOLED_Infringement_Analysis.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('BOE_OLED_Analysis.pdf', 'DATA_23')">view</button><button class="btn dl-btn" onclick="openApprovalModal('BOE_OLED_Analysis.pdf', 'DATA_23')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">🖥️ CSOT (华星光电)</div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 CSOT_TCL_Panel_Structure_Analysis.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('CSOT_Panel_Analysis.pdf', 'DATA_25')">view</button><button class="btn dl-btn" onclick="openApprovalModal('CSOT_Panel_Analysis.pdf', 'DATA_25')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 7.0 RE_CSOT_2026_001_Burford.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('7.0 RE_CSOT_2026_001_Burford.docx', 'DATA_CSOT_RE_BURFORD')">view</button><button class="btn dl-btn" onclick="openApprovalModal('7.0 RE_CSOT_2026_001_Burford.docx', 'DATA_CSOT_RE_BURFORD')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">📐 Visionox (维信诺)</div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 Visionox_AMOLED_Driver_Circuit_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Visionox_Report.pdf', 'DATA_03')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Visionox_Report.pdf', 'DATA_03')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">🦾 Huawei (华为)</div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 Huawei_Mate_Series_DriverIC_Report.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Huawei_DriverIC_Report.pdf', 'DATA_24')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Huawei_DriverIC_Report.pdf', 'DATA_24')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">🔬 III. 글로벌 반도체 및 DDIC 설계 얼라이언스 (Global Semiconductors & DDIC Alliance)</div>
+    <div class="grid-container">
+        <div class="dashboard-card">
+            <div class="card-header">
+                <span>🔺 LX Semiconductor</span>
+                <span class="badge-nda" style="background-color: #f1f5f9; color: #475569;">DDIC Corp</span>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 LX Semiconductor_Notice_202406.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ClaimChart_KRMapping_202601_LX_v1.0.pdf', 'DATA_15')">view</button><button class="btn dl-btn" onclick="openApprovalModal('LX Semiconductor_Notice_202406.pdf', 'DATA_15')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📊 Estimated Damages_LX Semiconductor_202607.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Estimated_Damages_LX_Semiconductor_202607.pdf', 'DATA_37')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Estimated_Damages_LX_Semiconductor_202607.pdf', 'DATA_37')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">
+                <span>🔺 Synaptics</span>
+                <span class="badge-nda" style="background-color: #f1f5f9; color: #475569;">Silicon Solutions</span>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 Synaptics_Notice_2023_Q1.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Synaptics_Notice_2023_Q1.pdf', 'DATA_33')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Synaptics_Notice_2023_Q1.pdf', 'DATA_33')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📊 Estimated Damages_Synaptics_202607.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Estimated_Damages_Synaptics_202607.pdf', 'DATA_38')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Estimated_Damages_Synaptics_202607.pdf', 'DATA_38')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 6.0 RE_Report_Synaptics_Burford_v1.0_20260715.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('6.0 RE_Report_Synaptics_Burford_v1.0_20260715.docx', 'DATA_SYNAPTICS_RE_BURFORD')">view</button><button class="btn dl-btn" onclick="openApprovalModal('6.0 RE_Report_Synaptics_Burford_v1.0_20260715.docx', 'DATA_SYNAPTICS_RE_BURFORD')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">🛰️ Qualcomm / Mediatek / Rohm</div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 Qualcomm_Snapdragon_Display_Interface.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Qualcomm_Display.pdf', 'DATA_21')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Qualcomm_Display.pdf', 'DATA_21')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Mediatek_Dimensity_IP_Mapping.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Mediatek_IP.pdf', 'DATA_22')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Mediatek_IP.pdf', 'DATA_22')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">⚡ Novatek / Google_novatek / Himax / Raydium</div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 Novatek_Himax_DDIC_Technical_Data.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Novatek_Himax_DDIC.pdf', 'DATA_14')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Novatek_Himax_DDIC.pdf', 'DATA_14')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Google_Novatek_Custom_Silicon_Analysis.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Google_Novatek.pdf', 'DATA_15')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Google_Novatek.pdf', 'DATA_15')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">⚙️ Analogix semi / Anapass / Magna chip</div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 Magnachip_OLED_DDIC_Market_Evaluation.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Magnachip_OLED.pdf', 'DATA_16')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Magnachip_OLED.pdf', 'DATA_16')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Analogix_Anapass_TCON_Protocol_Analysis.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Analogix_Anapass.pdf', 'DATA_17')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Analogix_Anapass.pdf', 'DATA_17')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 5.0 Magnachip_Assessment_Burford.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('5.0 Magnachip_Assessment_Burford.docx', 'DATA_MAGNA_ASSESS')">view</button><button class="btn dl-btn" onclick="openApprovalModal('5.0 Magnachip_Assessment_Burford.docx', 'DATA_MAGNA_ASSESS')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 5.1 Magnachip_RE_Assessment_Burford_details.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('5.1 Magnachip_RE_Assessment_Burford_details.docx', 'DATA_MAGNA_RE_DETAILS')">view</button><button class="btn dl-btn" onclick="openApprovalModal('5.1 Magnachip_RE_Assessment_Burford_details.docx', 'DATA_MAGNA_RE_DETAILS')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 5.2 RE_Technical_Analysis_Report_JumiHolding_Burford_2026.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('5.2 RE_Technical_Analysis_Report_JumiHolding_Burford_2026.docx', 'DATA_RE_TECH_REPORT_2026')">view</button><button class="btn dl-btn" onclick="openApprovalModal('5.2 RE_Technical_Analysis_Report_JumiHolding_Burford_2026.docx', 'DATA_RE_TECH_REPORT_2026')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">👓 IV. 차세대 마이크로 디스플레이 및 XR 생태계 (Micro-Display & XR Backplane Core)</div>
+    <div class="grid-container">
+        <div class="dashboard-card">
+            <div class="card-header">📸 Sony / MicroOLED / JBD / Kopin</div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 Microoled_ALL_CLAIMS_v2.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Microoled_ALL_CLAIMS_v2.pdf', 'DATA_MO_01')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Microoled_ALL_CLAIMS_v2.pdf', 'DATA_MO_01')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 3.0 MicroOLED_Litigation_Finance_Briefing_JumiHolding_2026.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('3.0 MicroOLED_Litigation_Finance_Briefing_JumiHolding_2026.docx', 'DATA_MO_FINANCE_BRIEFING')">view</button><button class="btn dl-btn" onclick="openApprovalModal('3.0 MicroOLED_Litigation_Finance_Briefing_JumiHolding_2026.docx', 'DATA_MO_FINANCE_BRIEFING')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">💎 Raontech / Sapien semiconductor / Viewtrix</div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 Raontech_Sapien_LEDoS_LCoS_Design.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Raontech_Sapien.pdf', 'DATA_19')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Raontech_Sapien.pdf', 'DATA_19')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Viewtrix_MicroOLED_Silicon_Backplane_Audit.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Viewtrix_Audit.pdf', 'DATA_04')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Viewtrix_Audit.pdf', 'DATA_04')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">🔌 Eswin / Seeya / Yunyinggu / Xianxin</div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 Eswin_Yunyinggu_OLED_Driver_Audit.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Eswin_Yunyinggu_OLED_Driver_Audit.pdf', 'DATA_07')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Eswin_Yunyinggu_OLED_Driver_Audit.pdf', 'DATA_07')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Seeya_MicroOLED_Backplane_Review.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Seeya_MicroOLED_Backplane_Review.pdf', 'DATA_08')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Seeya_MicroOLED_Backplane_Review.pdf', 'DATA_08')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Current communication state_email.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Current_communication_state_email.pdf', 'DATA_COMM_EMAIL')">download</button></div></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">📊 V. 통합 정량 분석 및 IR 투자 자산 (Financial Projections & IR Investment Packages)</div>
+    <div class="grid-container">
+        <div class="dashboard-card" style="grid-column: 1 / -1;">
+            <div class="card-header">📈 Valuation, Memorandum & Outreach Core Package</div>
+            <ul class="file-list">
+                <li class="file-item"><div class="file-info">📄 ACBM_Investment_Memorandum_v4.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('ACBM_Investment_Memorandum_v4.pdf', 'DATA_IM_04')">view</button><button class="btn dl-btn" onclick="openApprovalModal('ACBM_Investment_Memorandum_v4.pdf', 'DATA_IM_04')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 0.ACBM_Investment_Memorandum_v4.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('0.ACBM_Investment_Memorandum_v4.docx', 'DATA_ACBM_IM_DOCX')">view</button><button class="btn dl-btn" onclick="openApprovalModal('0.ACBM_Investment_Memorandum_v4.docx', 'DATA_ACBM_IM_DOCX')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 1 JUMI Holding vs. Samsung - Patent Infringement Case.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('1 JUMI Holding vs. Samsung - Patent Infringement Case.docx', 'DATA_JUMI_VS_SEC')">view</button><button class="btn dl-btn" onclick="openApprovalModal('1 JUMI Holding vs. Samsung - Patent Infringement Case.docx', 'DATA_JUMI_VS_SEC')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 2. JUMI Holding vs. Apple - Patent Infringement Case.docx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('2. JUMI Holding vs. Apple - Patent Infringement Case.docx', 'DATA_JUMI_VS_APPLE')">view</button><button class="btn dl-btn" onclick="openApprovalModal('2. JUMI Holding vs. Apple - Patent Infringement Case.docx', 'DATA_JUMI_VS_APPLE')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 acbm_fin_202603.pdf</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('acbm_fin_202603.pdf', 'DATA_FIN_01')">view</button><button class="btn dl-btn" onclick="openApprovalModal('acbm_fin_202603.pdf', 'DATA_FIN_01')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📄 Estimate demage_LX semicon_v1</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('Estimate demage_LX semicon_v1', 'DATA_55')">view</button><button class="btn dl-btn" onclick="openApprovalModal('Estimate demage_LX semicon_v1', 'DATA_02')">download</button></div></li>
+                <li class="file-item"><div class="file-info">📊 RoyaltyBase_Calculation_AllDefendants.xlsx</div><div class="action-btns"><button class="btn view-btn" onclick="viewFile('RoyaltyBase_Calculation_AllDefendants.xlsx', 'DATA_21')">view</button><button class="btn dl-btn" onclick="openApprovalModal('RoyaltyBase_Calculation_AllDefendants.xlsx', 'DATA_21')">download</button></div></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 ACBM Data Room / JUMI IP Investment Management. All Confidential Rights Reserved.</p>
+    </footer>
+</div>
+
+<div id="approvalModal" class="modal-overlay">
+    <div class="modal-box">
+        <h3>📥 다운로드 승인 요청 (투자 및 파트너 검토 전용)</h3>
+        <p>선택 파일: <strong id="modalFileName" style="color:#2563eb;">-</strong></p>
+        <p>본 데이터는 글로벌 IP 크로스 체크를 위한 고도 기밀 문서입니다. 기밀 유지를 위한 상세 담당 정보를 기술하여 승인 요청을 기조하십시오.</p>
+        
+        <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:4px;">요청자 성함 / 소속 기관</label>
+        <input type="text" id="reqName" placeholder="예: 홍길동 팀장 (XYZ 인베스트먼트)">
+        
+        <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:4px;">기관 보안 이메일 주소</label>
+        <input type="email" id="reqEmail" placeholder="예: partner@company.com">
+        
+        <label style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:4px;">실사 목적 및 사유</label>
+        <textarea id="reqReason" rows="3" placeholder="예: 글로벌 디스플레이 및 세미컨덕터 IP 가치 분석 및 전략 실사" style="width:100%; border:1px solid var(--border-color); border-radius:4px; padding:8px; box-sizing:border-box; margin-bottom:15px; font-family:inherit; resize:none;"></textarea>
+        
+        <div class="modal-flex-btns">
+            <button class="btn" onclick="closeApprovalModal()" style="border:1px solid #cbd5e1; color:#64748b;">취소</button>
+            <button class="btn" id="submitBtn" onclick="submitApproval()" style="background:var(--accent-color); color:#fff; border:none; padding:4px 16px;">승인 요청 보내기</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const fileIdMap = {
+        'DATA_01': '1DIE-kQbhCWbuXgLp9GogKNvUW_TsD2IL',
+        'DATA_02': '1d6kmLxNDEuThFZVRWg6HCk6TrkYy_xOx',
+        'DATA_03': '1PDLfDuWXcEibkBH5YkOU0lQhX1nW6GVz', 
+        'DATA_04': '1gs9nZ8YeRHegE_s6YWdOHxrsYH4Mw0nM',
+        'DATA_05': '1Ht8lMTBOA1ZfM8H-h6F42Igves2-Jhwt', 
+        'DATA_06': '1vhdeVJ7JpIKY-aYsRiqtgPIHJHDN1o4y',
+        'DATA_07': '1N6-aZQeSnutyhN4nopu_rlM7e4Jqc8jN', 
+        'DATA_08': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu08',
+        'DATA_10': '1-XVfoKwDXAeNnzbumEa-mXhIn-m6N7pn', 
+        'DATA_11': '11KNqngl9N5kL8ZyBQVHDJbthHprZDAv7', 
+        'DATA_12': '1LKB90cR4cK1W4O7uVfvezedP3JnvIEZl', 
+        'DATA_13': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu13',
+        'DATA_14': '1LKB90cR4cK1W4O7u-000000000000014', 
+        'DATA_15': '1kuRBfMyrm4UNLBpxVVUc0E2kUR1256oz',
+        'DATA_16': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu16', 
+        'DATA_17': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu17',
+        'DATA_18': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu18', 
+        'DATA_19': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu19',
+        'DATA_20': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu20', 
+        'DATA_21': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu21',
+        'DATA_22': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu22', 
+        'DATA_23': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu23',
+        'DATA_24': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu24', 
+        'DATA_25': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu25',
+        'DATA_31': '1ZnqOwQoDcR8ZzDYo0W_fZMnYaMNZQb26',
+        'DATA_33': '1rq6_f_mLH2jUk3xjV610RyTjnvxbudvF', 
+        'DATA_36': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu36',
+        
+        'DATA_FIN_01': '1Q8jiQsd7TsMbJir9kAwovRUTUgpD-3C6',
+        'DATA_IM_04': '1FA83VCRkGl_7sD9FcVoPq8PRlyKmVTtw',
+        'DATA_SDC_01': '179kkDynsfq76DzxxcHvVs6H3uRYzIulf',
+        'DATA_MO_01': '1Pv8rjfTwlnveNmKGqP6gVLvcw2NCRr8W',
+        'DATA_SEC_01': '1znR-Qc4TVZEs_MYtCAebRXCyRZ7T5SMo',
+        'DATA_55': '1c1A6xqOYGFbS6IaBP5lXTPLTXkkK7LQY',
+
+        'DATA_37': '1c1A6xqOYGFbS6IaBP5lXTPLTXkkK7LQY',
+        'DATA_38': '1c1A6xqOYGFbS6IaBP5lXTPLTXkkK7v38',
+        'DATA_COMM_EMAIL': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu39',
+
+        'DATA_BURFORD': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu40',
+
+        // 신규 추가 문서 드라이브 ID 맵 매핑 (기본 매핑 ID 연동)
+        'DATA_ACBM_IM_DOCX': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu41',
+        'DATA_JUMI_VS_SEC': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu42',
+        'DATA_SEC_BURFORD_EN': '1gjV9eimob-UH5SuSkhZm1NJy_rOkQZAE',
+        'DATA_SEC_BURFORD_KR': '1ZxB_nD3rEdqzXnfEhRGfHNOUuPk1RQ79',
+        'DATA_SEC_RE_EN': '1SQG5TMxbUFICETJpmNI_NZTo8v72dW9S',
+        'DATA_SEC_RE_KR': '1MYOkjEF2Rn5vk8YmcLnGNjkr7Lr8fuJe',
+        'DATA_JUMI_VS_APPLE': '1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu47',
+        'DATA_APPLE_BURFORD': '1YFEqavJcbDk4haVtUPBcEEhGNcfRtjFO',
+        'DATA_APPLE_TECH_01': '1KAbgy6RvgsFO8yMsP4fgMiviZ8uPfWIs',
+        'DATA_MO_FINANCE_BRIEFING': '1W5BnnghzDNvDQT5ssdzzkGhnnvkZc2Tt',
+        'DATA_LG_RE_01': '1npzw_eES9a1kmRmzHnoT0HrGKb7fPowS',
+        'DATA_LG_RE_KR': '1l6xFr61ri7kVPOez6JhO3Nlh0boCFcWS',
+        'DATA_LGD_RE_01': '1DQZyHOaIe0aj0rp5UK8oiMKBXC6MXEyd',
+        'DATA_MAGNA_ASSESS': '1zTpbKVLl-KjhQknCM9l-MbqoMGPq25DY',
+        'DATA_MAGNA_RE_DETAILS': '1CvnHY85Df3gNglfbQ_bkkEiVIhOqY_gw',
+        'DATA_RE_TECH_REPORT_2026': '1uoCYhu3e18P7EAGdqQzcGRJikOxcjDD2',
+        'DATA_SYNAPTICS_RE_BURFORD': '16yDgZMyesDeJe2uue7hETgWKdtz70YKW',
+        'DATA_CSOT_RE_BURFORD': '19LqidyzyZ-g9h_KXRXVMQ-VgRUvJ3ABE',
+        'DATA_SEC_NDA_EXEC': '1JU3jt9XP23qMYVZrFfEjBbwm6LN1hTJS',
+        'DATA_SDC_NDA_REV': '16fbtVVwktY6X8zzoUhvLXw4uyQNtxncB'
+    };
+
+    let currentSelectFile = { name: '', code: '' };
+
+    function viewFile(fileName, dataCode) {
+        var isConfirmed = confirm(
+            "⚠️ [보안 실사 및 기밀유지협약(NDA) 안내]\n\n" +
+            "본 문서(" + fileName + ")는 상호 기밀 유지 계약(NDA) 범위 내의 자산입니다. 열람 기록 및 IP 인포메이션은 오디트 시스템에 영구 기록됩니다.\n\n" +
+            "조항에 동의하고 열람을 속행하시겠습니까?"
+        );
+
+        if (!isConfirmed) {
+            alert("❌ 보안 승인 거부로 파일 열람이 취소되었습니다.");
+            return;
+        }
+
+        var fileId = fileIdMap[dataCode] || "1thWT78JwXtYylmZ7z8Sbn0VTaRP4Mu0u";
+        var fileUrl = "https://drive.google.com/file/d/" + fileId + "/view?usp=sharing";
+        window.open(fileUrl, '_blank');
+    }
+
+    function openApprovalModal(fileName, dataCode) {
+        currentSelectFile.name = fileName;
+        currentSelectFile.code = dataCode;
+        document.getElementById('modalFileName').innerText = fileName;
+        document.getElementById('approvalModal').style.display = 'flex';
+    }
+
+    function closeApprovalModal() {
+        document.getElementById('approvalModal').style.display = 'none';
+        document.getElementById('reqName').value = '';
+        document.getElementById('reqEmail').value = '';
+        document.getElementById('reqReason').value = '';
+        document.getElementById('submitBtn').innerText = "승인 요청 보내기";
+        document.getElementById('submitBtn').disabled = false;
+    }
+
+    function submitApproval() {
+        let name = document.getElementById('reqName').value.trim();
+        let email = document.getElementById('reqEmail').value.trim();
+        let reason = document.getElementById('reqReason').value.trim();
+        
+        if(!name || !email || !reason) {
+            alert("보안 실사 정보를 누락 없이 작성해 주세요.");
+            return;
+        }
+
+        document.getElementById('submitBtn').innerText = "전송 중...";
+        document.getElementById('submitBtn').disabled = true;
+
+        let templateParams = {
+            admin_email: "acbm026@gmail.com",
+            file_name: currentSelectFile.name,
+            file_code: currentSelectFile.code,
+            user_name: name,
+            user_email: email,
+            request_reason: reason
+        };
+
+        emailjs.send('service_e7y2vie', 'template_eert82e', templateParams)
+            .then(function(response) {
+                alert("📩 다운로드 권한 요청이 전송되었습니다.\n\n관리팀 및 법무 파트의 아웃바운드 검토 후 연락드리겠습니다.");
+                closeApprovalModal();
+            }, function(error) {
+                alert("📩 [백업 접수] 내부 보안 게이트를 통해 승인 요청 데이터가 정상 누적 접수되었습니다.");
+                closeApprovalModal();
+            });
+    }
+</script>
+
+<script>
+    window.addEventListener('keydown', function(e) {
+        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 80))) {
+            e.preventDefault();
+            return false;
+        }
+    });
+    window.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert("🔒 보안 정책에 의해 소스 검사 및 마우스 우클릭이 영구히 제한됩니다.");
+        return false;
+    });
+</script>
+</body>
+</html>
